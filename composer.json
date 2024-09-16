@@ -1,0 +1,17 @@
+{
+    "name": "gabrielpcruz/slim-framework",
+    "description": "Uma lib skeleton para o slim framework",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Gabrielpcruz\\SlimFramework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gabriel Cruz"
+        }
+    ],
+    "require": {}
+}
