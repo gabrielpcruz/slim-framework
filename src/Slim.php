@@ -2,6 +2,8 @@
 
 namespace SlimFramework;
 
+require './../vendor/autoload.php';
+
 use Adbar\Dot;
 use SlimFramework\Directory\Directory;
 use SlimFramework\Handler\ErrorHandler;
@@ -18,6 +20,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\App as SlimApp;
 use Slim\Factory\ServerRequestCreatorFactory;
 use Slim\Flash\Messages;
+use SlimFramework\Session\Session;
 
 class Slim
 {
@@ -178,8 +181,10 @@ class Slim
      * @throws NotFoundExceptionInterface
      * @throws Exception
      */
-    public static function bootstrap(): SlimApp
+    public static function getApp(): SlimApp
     {
+        Session::start();
+
         $app = self::getInstace();
 
         $container = $app->getContainer();
@@ -195,6 +200,15 @@ class Slim
         if (!Slim::isConsole()) {
             self::middlewares($app);
         }
+
+        $settings = self::settings();
+
+        error_reporting($settings->get('error.error_reporting'));
+        ini_set('display_errors', $settings->get('error.display_errors'));
+        ini_set('display_startup_errors', $settings->get('error.display_startup_errors'));
+
+        // Timezone
+        date_default_timezone_set($settings->get('timezone'));
 
         return $app;
     }
