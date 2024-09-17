@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Mail;
+namespace SlimFramework\Mail;
 
 interface Mailer
 {

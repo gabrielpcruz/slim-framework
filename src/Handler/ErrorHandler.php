@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Handler;
+namespace SlimFramework\Handler;
 
-use App\src\Slim;
+use SlimFramework\Slim;
 use GuzzleHttp\Psr7\Response;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;

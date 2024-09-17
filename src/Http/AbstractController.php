@@ -1,9 +1,9 @@
 <?php
 
-namespace App\src\Http;
+namespace SlimFramework\Http;
 
-use App\src\Slim;
-use App\src\Repository\RepositoryManager;
+use SlimFramework\Slim;
+use SlimFramework\Repository\RepositoryManager;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;

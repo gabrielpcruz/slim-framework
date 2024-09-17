@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Utils;
+namespace SlimFramework\Utils;
 
 use DomainException;
 use stdClass;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Entity;
+namespace SlimFramework\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\src\Provider;
+namespace SlimFramework\Provider;
 
 use Adbar\Dot;
-use App\src\Database\Connections;
+use SlimFramework\Database\Connections;
 use Illuminate\Database\Capsule\Manager;
 use Psr\Container\ContainerInterface;
 

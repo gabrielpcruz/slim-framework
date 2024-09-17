@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Session;
+namespace SlimFramework\Session;
 
-use App\Entity\User\UserEntity;
+use SlimFramework\Entity\User\UserEntity;
 
 class Session
 {

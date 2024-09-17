@@ -1,13 +1,13 @@
 <?php
 
-namespace App\src\Container;
+namespace SlimFramework\Container;
 
-use App\Repository\User\AccessTokenAbstractRepository;
-use App\Service\Token\AuthorizationServer;
-use App\Service\Token\AuthorizationServer as SlimAuthorizationServer;
-use App\src\Slim;
-use App\src\Directory\Directory;
-use App\src\Repository\RepositoryManager;
+use SlimFramework\Repository\User\AccessTokenAbstractRepository;
+use SlimFramework\Service\Token\AuthorizationServer;
+use SlimFramework\Service\Token\AuthorizationServer as SlimAuthorizationServer;
+use SlimFramework\Slim;
+use SlimFramework\Directory\Directory;
+use SlimFramework\Repository\RepositoryManager;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\ConnectionInterface;
 use League\OAuth2\Server\AuthorizationValidators\BearerTokenValidator;
@@ -59,7 +59,7 @@ class DefaultContainer implements SlimContainerApp
 
                 $extensions = Directory::turnNameSpacePathIntoArray(
                     $twigExtensionsPath,
-                    "\\App\\Slim\\Twig\\"
+                    "\\SlimFramework\\Slim\\Twig\\"
                 );
 
                 $twig->addExtension(new DebugExtension());

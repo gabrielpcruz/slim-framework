@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Provider;
+namespace SlimFramework\Provider;
 
 use Adbar\Dot;
 use Psr\Container\ContainerInterface;

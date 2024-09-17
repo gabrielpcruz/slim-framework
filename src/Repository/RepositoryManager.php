@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Repository;
+namespace SlimFramework\Repository;
 
 use Illuminate\Database\ConnectionInterface;
 use ReflectionClass;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Database;
+namespace SlimFramework\Database;
 
-use App\src\Slim;
+use SlimFramework\Slim;
 use DomainException;
 use Exception;
 use Psr\Container\ContainerExceptionInterface;

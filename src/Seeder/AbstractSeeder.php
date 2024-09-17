@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Seeder;
+namespace SlimFramework\Seeder;
 
-use App\src\Slim;
+use SlimFramework\Slim;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Illuminate\Database\ConnectionInterface;

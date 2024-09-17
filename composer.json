@@ -5,13 +5,35 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Gabrielpcruz\\SlimFramework\\": "src/"
-        }
+            "\\SlimFramework\\": "src/"
+        },
+        "files": [
+            "helper/slim.php"
+        ]
     },
     "authors": [
         {
             "name": "Gabriel Cruz"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=8.3",
+        "ext-iconv": "*",
+        "ext-json": "*",
+        "adbario/php-dot-notation": "^3.1",
+        "fig/http-message-util": "^1.1",
+        "guzzlehttp/psr7": "^2.4",
+        "illuminate/database": "^8.83",
+        "league/oauth2-server": "^8.3",
+        "ocramius/proxy-manager": "^1.0",
+        "php-di/php-di": "^6.4",
+        "phpmailer/phpmailer": "^6.7",
+        "slashtrace/slashtrace": "^1.1",
+        "slim/flash": "^0.4.0",
+        "slim/slim": "^4.10",
+        "slim/twig-view": "^3.3",
+        "symfony/console": "^5.4",
+        "symfony/yaml": "^5.4",
+        "twig/intl-extra": "^3.7"
+    }
 }

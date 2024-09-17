@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Repository;
+namespace SlimFramework\Repository;
 
-use App\src\Entity\Entity;
+use SlimFramework\Entity\Entity;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;

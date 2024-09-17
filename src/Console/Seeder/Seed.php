@@ -1,10 +1,10 @@
 <?php
 
-namespace App\src\Console\Seeder;
+namespace SlimFramework\Console\Seeder;
 
-use App\src\Slim;
-use App\src\Console\Console;
-use App\src\Directory\Directory;
+use SlimFramework\Slim;
+use SlimFramework\Console\Console;
+use SlimFramework\Directory\Directory;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Psr\Container\ContainerExceptionInterface;
@@ -21,7 +21,7 @@ class Seed extends Console
     protected function configure(): void
     {
         $this->setName('seeder:slim:seed');
-        $this->setDescription('Run the seeders commands presents on "App\\Seeder" namespace.');
+        $this->setDescription('Run the seeders commands presents on "SlimFramework\\Seeder" namespace.');
     }
 
     /**
@@ -39,7 +39,7 @@ class Seed extends Console
 
         $seederPath = Directory::turnNameSpacePathIntoArray(
             $seederPath,
-            "App\\Seeder\\",
+            "SlimFramework\\Seeder\\",
             [],
             ['Slim']
         );

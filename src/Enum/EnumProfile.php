@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Enum;
+namespace SlimFramework\Enum;
 
 class EnumProfile
 {

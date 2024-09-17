@@ -1,9 +1,9 @@
 <?php
 
-namespace App\src\Http\Api;
+namespace SlimFramework\Http\Api;
 
-use App\src\Http\AbstractController;
-use App\src\Utils\Dynamic;
+use SlimFramework\Http\AbstractController;
+use SlimFramework\Utils\Dynamic;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;

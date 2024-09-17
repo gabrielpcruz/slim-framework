@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Console\Entity;
+namespace SlimFramework\Console\Entity;
 
-use App\src\Console\Console;
+use SlimFramework\Console\Console;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Console\Command\Command;
@@ -52,7 +52,7 @@ class NewEntity extends Console
         $newEntityName = $EntityName;
         $newEntity = "{$newEntityName}";
 
-        $nameSpaceEntity = "App\\Entity\\$EntityName";
+        $nameSpaceEntity = "SlimFramework\\Entity\\$EntityName";
         $newEntityClass = $this->templateEntity($newEntity, $nameSpaceEntity);
 
 
@@ -73,7 +73,7 @@ class NewEntity extends Console
         $newRepositoryName = $EntityName;
         $newRepository = "{$newRepositoryName}";
 
-        $nameSpaceRepository = "App\\Repository\\$EntityName";
+        $nameSpaceRepository = "SlimFramework\\Repository\\$EntityName";
         $newRepositoryClass = $this->templateRepository(
             $newRepository,
             "{$nameSpaceEntity}",

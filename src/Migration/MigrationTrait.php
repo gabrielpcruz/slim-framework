@@ -1,9 +1,9 @@
 <?php
 
-namespace App\src\Migration;
+namespace SlimFramework\Migration;
 
-use App\src\Slim;
-use App\src\Directory\Directory;
+use SlimFramework\Slim;
+use SlimFramework\Directory\Directory;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Generator;
@@ -48,7 +48,7 @@ trait MigrationTrait
 
         $migrations = Directory::turnNameSpacePathIntoArray(
             $pathMigration,
-            "\\App\\Migration\\",
+            "\\SlimFramework\\Migration\\",
             $excludeFiles,
             $ExcludePaths
         );

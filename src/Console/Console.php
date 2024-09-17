@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Console;
+namespace SlimFramework\Console;
 
 use DomainException;
 use Psr\Container\ContainerInterface;

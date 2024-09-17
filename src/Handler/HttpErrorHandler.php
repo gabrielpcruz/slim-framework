@@ -1,14 +1,14 @@
 <?php
 
-namespace App\src\Handler;
+namespace SlimFramework\Handler;
 
-use App\Exception\Api\Authentication\GrantTypeMissingException;
-use App\Exception\Entity\InvalidEntityParametersCreation;
-use App\Exception\Entity\InvalidEntityParametersUpdate;
-use App\Message\Code;
-use App\Message\Message;
-use App\src\Exception\UserNotAllowedException;
-use App\src\Utils\Dynamic;
+use SlimFramework\Exception\Api\Authentication\GrantTypeMissingException;
+use SlimFramework\Exception\Entity\InvalidEntityParametersCreation;
+use SlimFramework\Exception\Entity\InvalidEntityParametersUpdate;
+use SlimFramework\Message\Code;
+use SlimFramework\Message\Message;
+use SlimFramework\Exception\UserNotAllowedException;
+use SlimFramework\Utils\Dynamic;
 use Illuminate\Contracts\Queue\EntityNotFoundException;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use LogicException;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Twig;
+namespace SlimFramework\Twig;
 
-use App\src\Session\Session;
+use SlimFramework\Session\Session;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

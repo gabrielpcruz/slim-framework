@@ -1,9 +1,9 @@
 <?php
 
-namespace App\src\Console;
+namespace SlimFramework\Console;
 
-use App\src\Slim;
-use App\src\Directory\Directory;
+use SlimFramework\Slim;
+use SlimFramework\Directory\Directory;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Psr\Container\ContainerExceptionInterface;
@@ -27,7 +27,7 @@ class ConsoleMapper
         $excludePaths = $this->getExcludedPaths();
 
         // Seeder
-        $seederNamespace = "App\\Slim\\Seeder\\";
+        $seederNamespace = "SlimFramework\\Slim\\Seeder\\";
         $seederPath = Slim::settings()->get('path.slim.seeder');
 
         $seederCommands = Directory::turnNameSpacePathIntoArray(
@@ -38,7 +38,7 @@ class ConsoleMapper
 
         // Console
         $consoleCommands = [];
-        $consoleNamespace = "App\\Console\\";
+        $consoleNamespace = "SlimFramework\\Console\\";
         $consolePath = Slim::settings()->get('path.console');
 
         $consoleCommands = Directory::turnNameSpacePathIntoArray(

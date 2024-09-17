@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Migration;
+namespace SlimFramework\Migration;
 
-use App\src\Console\Console;
+use SlimFramework\Console\Console;
 use Psr\Container\ContainerInterface;
 
 abstract class ConsoleMigration extends Console

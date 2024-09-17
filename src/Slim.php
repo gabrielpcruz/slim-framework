@@ -1,16 +1,12 @@
 <?php
 
-namespace App\src;
+namespace SlimFramework;
 
 use Adbar\Dot;
-use App\Middleware\Site\Authentication\AuthenticationSite;
-use App\Middleware\Site\Maintenance\MaintenanceMiddleware;
-use App\Middleware\Site\Maintenance\RoutesInMaintenanceMiddleware;
-use App\Slim\Handler\Error;
-use App\src\Directory\Directory;
-use App\src\Handler\ErrorHandler;
-use App\src\Handler\HttpErrorHandler;
-use App\src\Provider\ProviderInterface;
+use SlimFramework\Directory\Directory;
+use SlimFramework\Handler\ErrorHandler;
+use SlimFramework\Handler\HttpErrorHandler;
+use SlimFramework\Provider\ProviderInterface;
 use DI\Container;
 use DI\DependencyException;
 use DI\NotFoundException;
@@ -239,7 +235,7 @@ class Slim
     private static function provide(Container $container, Dot $settings): void
     {
         $providersPath = self::settings()->get('path.provider');
-        $providersNameSpace = "\\App\\Slim\\Provider\\";
+        $providersNameSpace = "\\SlimFramework\\Slim\\Provider\\";
 
         $providers = Directory::turnNameSpacePathIntoArray(
             $providersPath,
@@ -270,8 +266,6 @@ class Slim
      */
     private static function middlewares(SlimApp $app): void
     {
-        $app->add(MaintenanceMiddleware::class);
-        $app->add(RoutesInMaintenanceMiddleware::class);
     }
 
     /**

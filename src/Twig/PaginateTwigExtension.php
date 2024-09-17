@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Twig;
+namespace SlimFramework\Twig;
 
 use Illuminate\Database\Eloquent\Collection;
 use Twig\Extension\AbstractExtension;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\src\Service;
+namespace SlimFramework\Service;
 
-use App\src\Slim;
-use App\src\Repository\AbstractRepository;
-use App\src\Repository\RepositoryManager;
+use SlimFramework\Slim;
+use SlimFramework\Repository\AbstractRepository;
+use SlimFramework\Repository\RepositoryManager;
 use DI\DependencyException;
 use DI\NotFoundException;
 use DomainException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Utils;
+namespace SlimFramework\Utils;
 
 class StringUtil
 {

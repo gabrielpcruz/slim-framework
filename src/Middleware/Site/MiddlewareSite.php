@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Middleware\Site;
+namespace SlimFramework\Middleware\Site;
 
-use App\src\Middleware\Middleware;
+use SlimFramework\Middleware\Middleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;

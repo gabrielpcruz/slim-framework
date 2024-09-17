@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Exception;
+namespace SlimFramework\Exception;
 
 use Exception;
 

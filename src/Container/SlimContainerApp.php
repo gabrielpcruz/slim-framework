@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Container;
+namespace SlimFramework\Container;
 
 interface SlimContainerApp
 {

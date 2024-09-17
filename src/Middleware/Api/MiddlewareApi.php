@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Middleware\Api;
+namespace SlimFramework\Middleware\Api;
 
-use App\src\Middleware\Middleware;
+use SlimFramework\Middleware\Middleware;
 use DomainException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

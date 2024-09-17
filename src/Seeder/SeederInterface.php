@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Seeder;
+namespace SlimFramework\Seeder;
 
 interface SeederInterface
 {

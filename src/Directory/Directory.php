@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Directory;
+namespace SlimFramework\Directory;
 
 use Generator;
 

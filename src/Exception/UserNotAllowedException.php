@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Exception;
+namespace SlimFramework\Exception;
 
-use App\Message\Exception\System\MessageExceptionSystem;
+use SlimFramework\Message\Exception\System\MessageExceptionSystem;
 use Throwable;
 
 class UserNotAllowedException extends SlimException

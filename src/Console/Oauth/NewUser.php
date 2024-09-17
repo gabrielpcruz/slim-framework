@@ -1,9 +1,9 @@
 <?php
 
-namespace App\src\Console\Oauth;
+namespace SlimFramework\Console\Oauth;
 
-use App\src\Enum\EnumProfile;
-use App\src\Migration\ConsoleMigration;
+use SlimFramework\Enum\EnumProfile;
+use SlimFramework\Migration\ConsoleMigration;
 use DateTime;
 use Exception;
 use Symfony\Component\Console\Command\Command;

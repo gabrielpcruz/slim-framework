@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\File;
+namespace SlimFramework\File;
 
 class File
 {

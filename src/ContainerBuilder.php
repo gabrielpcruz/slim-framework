@@ -1,9 +1,9 @@
 <?php
 
-namespace App\src;
+namespace SlimFramework;
 
-use App\src\Container\DefaultContainer;
-use App\src\Directory\Directory;
+use SlimFramework\Container\DefaultContainer;
+use SlimFramework\Directory\Directory;
 use DI\Container;
 use DI\ContainerBuilder as ContainerBuilderDI;
 use Exception;
@@ -40,7 +40,7 @@ final class ContainerBuilder
 
         $controllers = Directory::turnNameSpacePathIntoArray(
             __DIR__ . '/../src/Http',
-            "\\App\\Http\\",
+            "\\SlimFramework\\Http\\",
             ["Controller.php"]
         );
 

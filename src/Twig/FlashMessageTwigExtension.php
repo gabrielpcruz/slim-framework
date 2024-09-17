@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Twig;
+namespace SlimFramework\Twig;
 
-use App\src\Slim;
+use SlimFramework\Slim;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Slim\Flash\Messages;

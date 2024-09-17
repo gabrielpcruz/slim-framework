@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Message;
+namespace SlimFramework\Message;
 
 abstract class Message
 {

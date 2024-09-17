@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Http\Site;
+namespace SlimFramework\Http\Site;
 
-use App\src\Http\AbstractController;
+use SlimFramework\Http\AbstractController;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig;

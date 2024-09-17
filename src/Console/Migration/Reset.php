@@ -1,9 +1,9 @@
 <?php
 
-namespace App\src\Console\Migration;
+namespace SlimFramework\Console\Migration;
 
-use App\src\Migration\ConsoleMigration;
-use App\src\Migration\Migration;
+use SlimFramework\Migration\ConsoleMigration;
+use SlimFramework\Migration\Migration;
 use Exception;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
