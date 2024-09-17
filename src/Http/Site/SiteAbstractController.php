@@ -10,7 +10,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class SiteAbstractController extends AbstractController
+abstract class SiteAbstractController extends AbstractController
 {
     /**
      * @var Twig

@@ -8,7 +8,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class ApiAbstractController extends AbstractController
+abstract class ApiAbstractController extends AbstractController
 {
     /**
      * @var Dynamic

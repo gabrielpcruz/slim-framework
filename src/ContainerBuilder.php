@@ -41,7 +41,11 @@ final class ContainerBuilder
         $controllers = Directory::turnNameSpacePathIntoArray(
             __DIR__ . '/../src/Http',
             "SlimFramework\\Http\\",
-            ["Controller.php"]
+            [
+                "AbstractController.php",
+                "SiteAbstractController.php",
+                "ApiAbstractController.php"
+            ]
         );
 
         foreach ($controllers as $controller) {
