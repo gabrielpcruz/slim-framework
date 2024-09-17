@@ -5,7 +5,7 @@ namespace SlimFramework\Container;
 use SlimFramework\Repository\User\AccessTokenAbstractRepository;
 use SlimFramework\Service\Token\AuthorizationServer;
 use SlimFramework\Service\Token\AuthorizationServer as SlimAuthorizationServer;
-use SlimFramework\Slim;
+use Slim\App;
 use SlimFramework\Directory\Directory;
 use SlimFramework\Repository\RepositoryManager;
 use Illuminate\Database\Capsule\Manager;
@@ -29,12 +29,12 @@ class DefaultContainer implements SlimContainerApp
     public function getDefinitions(): array
     {
         return [
-            Slim::class => function (ContainerInterface $container) {
+            App::class => function (ContainerInterface $container) {
                 $app = AppFactory::createFromContainer($container);
 
-                // Adding routes of application
-                (require __DIR__ . '/../routes/web.php')($app);
-                (require __DIR__ . '/../routes/api.php')($app);
+//                // Adding routes of application
+//                (require __DIR__ . '/../routes/web.php')($app);
+//                (require __DIR__ . '/../routes/api.php')($app);
 
                 $app->addRoutingMiddleware();
 
