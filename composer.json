@@ -6,7 +6,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "\\SlimFramework\\": "src/"
+            "SlimFramework\\": "src/"
         },
         "files": [
             "helper/slim.php"
