@@ -2,6 +2,8 @@
 
 namespace SlimFramework\Container;
 
+use Adbar\Dot;
+use SlimFramework\Configuration\ConfigurationInterface;
 use SlimFramework\Repository\User\AccessTokenAbstractRepository;
 use SlimFramework\Service\Token\AuthorizationServer;
 use SlimFramework\Service\Token\AuthorizationServer as SlimAuthorizationServer;
@@ -29,6 +31,25 @@ class DefaultContainer implements SlimContainerApp
     public function getDefinitions(): array
     {
         return [
+            'settings' => function () {
+                $configurationClasses = array_filter(
+                    get_declared_classes(),
+                    function ($class_name) {
+                        return in_array('ConfigurationInterface', class_implements($class_name));
+                    }
+                );
+
+                $configurations = [];
+
+                foreach ($configurationClasses as $class) {
+                    /** @var ConfigurationInterface $configurationClass */
+                    $configurationClass = new $class();
+
+                    $configurations = array_replace_recursive($configurations, ($configurationClass)->configure());
+                }
+
+                return new Dot($configurations);
+            },
             App::class => function (ContainerInterface $container) {
                 $app = AppFactory::createFromContainer($container);
 
@@ -42,7 +63,7 @@ class DefaultContainer implements SlimContainerApp
             },
 
             Twig::class => function (ContainerInterface $container) {
-                $settings = $container->get('settings');
+                $settings = $container->has('settings');
 
                 $rootPath = $settings->get('view.path');
                 $templates = $settings->get('view.templates');
