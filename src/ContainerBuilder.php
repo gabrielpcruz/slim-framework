@@ -40,7 +40,7 @@ final class ContainerBuilder
 
         $controllers = Directory::turnNameSpacePathIntoArray(
             __DIR__ . '/../src/Http',
-            "\\SlimFramework\\Http\\",
+            "SlimFramework\\Http\\",
             ["Controller.php"]
         );
 
