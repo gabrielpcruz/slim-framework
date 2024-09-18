@@ -249,7 +249,7 @@ class Slim
     private static function provide(Container $container, Dot $settings): void
     {
         $providersPath = self::settings()->get('path.provider');
-        $providersNameSpace = "\\SlimFramework\\Slim\\Provider\\";
+        $providersNameSpace = "SlimFramework\\Slim\\Provider\\";
 
         $providers = Directory::turnNameSpacePathIntoArray(
             $providersPath,
