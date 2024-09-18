@@ -191,7 +191,7 @@ class Slim
         $settings = self::settings();
 
         self::defineConstants($settings);
-        self::cacheRoutes($app);
+//        self::cacheRoutes($app);
 
         self::provide($container, $settings);
 
