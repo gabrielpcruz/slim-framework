@@ -183,17 +183,16 @@ class Slim
      */
     public static function getApp(): SlimApp
     {
+        define('SLIM_FRAMEWORK_ROOT_PATH', str_replace('/src', '', __DIR__));
+
         Session::start();
 
         $app = self::getInstace();
 
-        $container = $app->getContainer();
-        $settings = self::settings();
-
-        self::defineConstants($settings);
+        self::defineConstants();
 //        self::cacheRoutes($app);
 
-        self::provide($container, $settings);
+        self::provide();
 
         self::addErrorHandler($app);
 
@@ -238,18 +237,16 @@ class Slim
     }
 
     /**
-     * @param Container $container
-     * @param Dot $settings
      * @return void
      * @throws ContainerExceptionInterface
      * @throws DependencyException
      * @throws NotFoundException
      * @throws NotFoundExceptionInterface
      */
-    private static function provide(Container $container, Dot $settings): void
+    private static function provide(): void
     {
         $providersPath = self::settings()->get('path.provider');
-        $providersNameSpace = "SlimFramework\\Slim\\Provider\\";
+        $providersNameSpace = "SlimFramework\\Provider\\";
 
         $providers = Directory::turnNameSpacePathIntoArray(
             $providersPath,
@@ -260,16 +257,21 @@ class Slim
         /** @var ProviderInterface $provider */
         foreach ($providers as $provider) {
             $provider = new $provider();
-            $provider->provide($container, $settings);
+            $provider->provide(self::container(), self::settings());
         }
     }
 
     /**
-     * @param Dot $settings
      * @return void
+     * @throws ContainerExceptionInterface
+     * @throws DependencyException
+     * @throws NotFoundException
+     * @throws NotFoundExceptionInterface
      */
-    private static function defineConstants(Dot $settings): void
+    private static function defineConstants(): void
     {
+        $settings = self::settings();
+
         define('STORAGE_PATH', $settings->get('path.storage'));
         define('PUBLIC_PATH', $settings->get('path.public'));
     }
