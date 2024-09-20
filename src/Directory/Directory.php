@@ -59,6 +59,10 @@ class Directory
     public static function getIterator($files): Generator
     {
         foreach ($files as $file) {
+            if (in_array($file, ['.', '..'])) {
+                continue;
+            }
+
             yield $file;
         }
     }
@@ -76,5 +80,20 @@ class Directory
         $nameSpaceSufix = str_replace("/", "\\", $nameSpaceSufix);
 
         return "App" . $nameSpaceSufix . '\\';
+    }
+
+    /**
+     * @param $path
+     * @return array
+     */
+    public static function getFiles($path)
+    {
+        $files = [];
+
+        foreach (Directory::getIterator(scandir($path)) as $file) {
+            $files[] = $file;
+        }
+
+        return $files;
     }
 }

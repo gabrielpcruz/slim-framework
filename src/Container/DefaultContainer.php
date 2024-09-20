@@ -31,6 +31,9 @@ class DefaultContainer implements SlimContainerApp
     public function getDefinitions(): array
     {
         return [
+            'config' => function (ContainerInterface $container) {
+                return $container->get('settings.config');
+            },
             'settings' => function () {
                 $configurationClasses = Directory::turnNameSpacePathIntoArray(
                     SLIM_FRAMEWORK_ROOT_PATH . '/src/Configuration',

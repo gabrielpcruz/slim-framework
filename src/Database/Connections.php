@@ -18,6 +18,12 @@ class Connections
         $databaseConnections = [];
 
         try {
+            $hasDatabaseConfiguration = Slim::settings()->has('slim_application.file.database');
+
+            if (!$hasDatabaseConfiguration) {
+                return $databaseConnections;
+            }
+
             $conections = (require_once Slim::settings()->get('slim_application.file.database'));
 
             foreach ($conections as $connectionName => $connection) {
