@@ -70,7 +70,7 @@ class DefaultContainer implements SlimContainerApp
                 $rootPath = $settings->get('slim_application.view.path');
                 $templates = $settings->get('slim_application.view.templates');
                 $viewSettings = $settings->get('slim_application.view.settings');
-                $twigExtensionsPath = $settings->get('slim_application.path.slim.twig');
+                $twigExtensionsPath = $settings->get('slim_framework.path.twig_extensions');
 
                 $loader = new FilesystemLoader([], $rootPath);
 

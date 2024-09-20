@@ -69,7 +69,7 @@ class DefaultConfiguration implements ConfigurationInterface
                     ],
                     'migration' => SLIM_APPLICATION_ROOT_PATH . '/app/Migration',
                     'seeder' => SLIM_APPLICATION_ROOT_PATH . '/app/Seeder',
-                    'twig' => SLIM_APPLICATION_ROOT_PATH . '/app/Twig',
+                    'twig_extensions' => SLIM_APPLICATION_ROOT_PATH . '/app/Twig',
                 ],
                 'provider' => SLIM_APPLICATION_ROOT_PATH . '/app/Provider',
                 'repository' => SLIM_APPLICATION_ROOT_PATH . '/app/Repository',
@@ -132,32 +132,32 @@ class DefaultConfiguration implements ConfigurationInterface
         $configuration['slim_application']['timezone'] = 'America/Sao_Paulo';
 
         $configuration['slim_application']['view'] = [
-            'path' => SLIM_FRAMEWORK_ROOT_PATH . '/resources/views',
+            'path' => SLIM_APPLICATION_ROOT_PATH . '/resources/views',
 
             'templates' => [
-                'api' => SLIM_FRAMEWORK_ROOT_PATH . '/resources/views/api',
-                'console' => SLIM_FRAMEWORK_ROOT_PATH . '/resources/views/console',
-                'email' => SLIM_FRAMEWORK_ROOT_PATH . '/resources/views/email',
-                'error' => SLIM_FRAMEWORK_ROOT_PATH . '/resources/views/error',
-                'layout' => SLIM_FRAMEWORK_ROOT_PATH . '/resources/views/layout',
-                'site' => SLIM_FRAMEWORK_ROOT_PATH . '/resources/views/site',
+                'api' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/api',
+                'console' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/console',
+                'email' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/email',
+                'error' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/error',
+                'layout' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/layout',
+                'site' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/site',
             ],
 
             'settings' => [
-                'cache' => SLIM_FRAMEWORK_ROOT_PATH . '/storage/cache/views',
+                'cache' => SLIM_APPLICATION_ROOT_PATH . '/storage/cache/views',
                 'debug' => true,
                 'auto_reload' => true,
             ],
 
             'assets' => [
                 // Public assets cache directory
-                'path' => SLIM_FRAMEWORK_ROOT_PATH . '/public/assets',
+                'path' => SLIM_APPLICATION_ROOT_PATH . '/public/assets',
 
                 // Public url base path
-                'url_base_path' => SLIM_FRAMEWORK_ROOT_PATH . '/public/assets',
+                'url_base_path' => SLIM_APPLICATION_ROOT_PATH . '/public/assets',
 
                 // Internal cache directory for the assets
-                'cache_path' => SLIM_FRAMEWORK_ROOT_PATH . '/storage/cache/views',
+                'cache_path' => SLIM_APPLICATION_ROOT_PATH . '/storage/cache/views',
 
                 'cache_name' => 'assets-cache',
 
