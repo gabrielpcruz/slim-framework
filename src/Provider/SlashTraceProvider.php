@@ -16,7 +16,7 @@ class SlashTraceProvider implements ProviderInterface
      */
     public function provide(ContainerInterface $container, Dot $settings): void
     {
-        if ($settings->get('error.slashtrace')) {
+        if ($settings->get('slim_application.error.slashtrace')) {
             $slashtrace = new SlashTrace();
 
             $slashtrace->addHandler(new DebugHandler());

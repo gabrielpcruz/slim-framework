@@ -65,12 +65,12 @@ class DefaultContainer implements SlimContainerApp
             },
 
             Twig::class => function (ContainerInterface $container) {
-                $settings = $container->has('settings');
+                $settings = $container->get('settings');
 
-                $rootPath = $settings->get('view.path');
-                $templates = $settings->get('view.templates');
-                $viewSettings = $settings->get('view.settings');
-                $twigExtensionsPath = $settings->get('path.slim.twig');
+                $rootPath = $settings->get('slim_application.view.path');
+                $templates = $settings->get('slim_application.view.templates');
+                $viewSettings = $settings->get('slim_application.view.settings');
+                $twigExtensionsPath = $settings->get('slim_application.path.slim.twig');
 
                 $loader = new FilesystemLoader([], $rootPath);
 
@@ -82,7 +82,7 @@ class DefaultContainer implements SlimContainerApp
 
                 $extensions = Directory::turnNameSpacePathIntoArray(
                     $twigExtensionsPath,
-                    "\\SlimFramework\\Slim\\Twig\\"
+                    "SlimFramework\\Slim\\Twig\\"
                 );
 
                 $twig->addExtension(new DebugExtension());
