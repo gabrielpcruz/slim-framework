@@ -38,7 +38,7 @@ class DefaultConfiguration implements ConfigurationInterface
                     ],
                     'migration' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Migration',
                     'seeder' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Seeder',
-                    'twig_extensions' => SLIM_APPLICATION_ROOT_PATH . '/src/Twig',
+                    'twig_extensions' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Twig',
                 ],
                 'provider' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Provider',
                 'repository' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Repository',
