@@ -20,40 +20,67 @@ class DefaultConfiguration implements ConfigurationInterface
 
         $configuration['root'] = SLIM_FRAMEWORK_ROOT_PATH;
 
-        $configuration['path'] = [
-            'tests' => SLIM_FRAMEWORK_ROOT_PATH . '/tests',
-            'public' => SLIM_FRAMEWORK_ROOT_PATH . '/public',
-            'assets' => 'assets/',
-            'config' => SLIM_FRAMEWORK_ROOT_PATH . '/config',
-            'data' => SLIM_FRAMEWORK_ROOT_PATH . '/data',
-            'storage' => SLIM_FRAMEWORK_ROOT_PATH . '/storage',
-            'cache' => SLIM_FRAMEWORK_ROOT_PATH . '/storage/cache',
-            'database' => SLIM_FRAMEWORK_ROOT_PATH . '/config/database',
-            'console' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console',
-            'migration' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Migration',
-            'seeder' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Seeder',
-            'slim' => [
-                'console' => [
-                    'cache' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Cache',
-                    'database' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Database',
-                    'entity' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Entity',
-                    'migration' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Migration',
-                    'oauth' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Oauth',
-                    'seeder' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Seeder',
-                ],
+        $configuration['slim_framework'] = [
+            'path' => [
+                'tests' => SLIM_FRAMEWORK_ROOT_PATH . '/tests',
+                'config' => SLIM_FRAMEWORK_ROOT_PATH . '/config',
+                'console' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console',
                 'migration' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Migration',
                 'seeder' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Seeder',
-                'twig' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Twig',
-            ],
-            'provider' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Provider',
-            'repository' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Repository',
-            'entity' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Entity',
-            'files' => [
-                'images' => SLIM_FRAMEWORK_ROOT_PATH . '/storage/images'
-            ],
+                'slim' => [
+                    'console' => [
+                        'cache' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Cache',
+                        'database' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Database',
+                        'entity' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Entity',
+                        'migration' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Migration',
+                        'oauth' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Oauth',
+                        'seeder' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Console/Seeder',
+                    ],
+                    'migration' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Migration',
+                    'seeder' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Seeder',
+                    'twig' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Twig',
+                ],
+                'provider' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Provider',
+                'repository' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Repository',
+                'entity' => SLIM_FRAMEWORK_ROOT_PATH . '/src/Entity',
+            ]
         ];
 
-        $configuration['system'] = [
+        $configuration['slim_application'] = [
+            'path' => [
+                'tests' => SLIM_APPLICATION_ROOT_PATH . '/tests',
+                'public' => SLIM_APPLICATION_ROOT_PATH . '/public',
+                'assets' => 'assets/',
+                'config' => SLIM_APPLICATION_ROOT_PATH . '/config',
+                'data' => SLIM_APPLICATION_ROOT_PATH . '/data',
+                'storage' => SLIM_APPLICATION_ROOT_PATH . '/storage',
+                'cache' => SLIM_APPLICATION_ROOT_PATH . '/storage/cache',
+                'database' => SLIM_APPLICATION_ROOT_PATH . '/config/database',
+                'console' => SLIM_APPLICATION_ROOT_PATH . '/src/Console',
+                'migration' => SLIM_APPLICATION_ROOT_PATH . '/src/Migration',
+                'seeder' => SLIM_APPLICATION_ROOT_PATH . '/src/Seeder',
+                'slim' => [
+                    'console' => [
+                        'cache' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Cache',
+                        'database' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Database',
+                        'entity' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Entity',
+                        'migration' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Migration',
+                        'seeder' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Seeder',
+                    ],
+                    'migration' => SLIM_APPLICATION_ROOT_PATH . '/app/Migration',
+                    'seeder' => SLIM_APPLICATION_ROOT_PATH . '/app/Seeder',
+                    'twig' => SLIM_APPLICATION_ROOT_PATH . '/app/Twig',
+                ],
+                'provider' => SLIM_APPLICATION_ROOT_PATH . '/app/Provider',
+                'repository' => SLIM_APPLICATION_ROOT_PATH . '/app/Repository',
+                'entity' => SLIM_APPLICATION_ROOT_PATH . '/app/Entity',
+                'files' => [
+                    'images' => SLIM_APPLICATION_ROOT_PATH . '/storage/images'
+                ]
+            ]
+        ];
+
+        $configuration['slim_application']['system'] = [
             'maintenance' => 0,
             'maintenance_return' => '2023-07-16 12:07',
             'maintenance_route' => '/maintenance',
@@ -65,16 +92,16 @@ class DefaultConfiguration implements ConfigurationInterface
         ];
 
 
-        $configuration['file'] = [
-            'providers' => $configuration['path']['config'] . '/provider/providers.php',
-            'commands' => $configuration['path']['config'] . '/command/commands.php',
-            'database' => $configuration['path']['config'] . '/database/database.php',
+        $configuration['slim_application']['file'] = [
+            'providers' => $configuration['slim_application']['path']['config'] . '/provider/providers.php',
+            'commands' => $configuration['slim_application']['path']['config'] . '/command/commands.php',
+            'database' => $configuration['slim_application']['path']['config'] . '/database/database.php',
 
-            'oauth_private' => $configuration['path']['data'] . '/oauth/keys/private.key',
-            'oauth_public' => $configuration['path']['data'] . '/oauth/keys/public.key',
+            'oauth_private' => $configuration['slim_application']['path']['data'] . '/oauth/keys/private.key',
+            'oauth_public' => $configuration['slim_application']['path']['data'] . '/oauth/keys/public.key',
         ];
 
-        $configuration['mailer'] = [
+        $configuration['slim_application']['mailer'] = [
             //PHPMailer settings
             'phpmailer' => [
                 //Configs
@@ -97,7 +124,7 @@ class DefaultConfiguration implements ConfigurationInterface
             ]
         ];
 
-        $configuration['error'] = [
+        $configuration['slim_application']['error'] = [
             'slashtrace' => 1, // Exibir erros na tela
             'error_reporting' => 1,
             'display_errors' => 1,
@@ -105,9 +132,9 @@ class DefaultConfiguration implements ConfigurationInterface
         ];
 
 
-        $configuration['timezone'] = 'America/Sao_Paulo';
+        $configuration['slim_application']['timezone'] = 'America/Sao_Paulo';
 
-        $configuration['view'] = [
+        $configuration['slim_application']['view'] = [
             'path' => SLIM_FRAMEWORK_ROOT_PATH . '/resources/views',
 
             'templates' => [

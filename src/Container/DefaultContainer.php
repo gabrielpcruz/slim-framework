@@ -32,11 +32,10 @@ class DefaultContainer implements SlimContainerApp
     {
         return [
             'settings' => function () {
-                $configurationClasses = array_filter(
-                    get_declared_classes(),
-                    function ($class_name) {
-                        return in_array('ConfigurationInterface', class_implements($class_name));
-                    }
+                $configurationClasses = Directory::turnNameSpacePathIntoArray(
+                    SLIM_FRAMEWORK_ROOT_PATH . '/src/Configuration',
+                    'SlimFramework\\Configuration\\',
+                    ['ConfigurationInterface.php']
                 );
 
                 $configurations = [];
