@@ -26,6 +26,10 @@ class Connections
 
             $conections = (require_once Slim::settings()->get('slim_application.file.database'));
 
+            if (!is_array($conections)) {
+                return $databaseConnections;
+            }
+
             foreach ($conections as $connectionName => $connection) {
                 $databaseConnections[$connectionName] = $connection;
             }
