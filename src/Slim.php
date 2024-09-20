@@ -247,7 +247,7 @@ class Slim
      */
     private static function provide(): void
     {
-        $providersPath = self::settings()->get('path.provider');
+        $providersPath = self::settings()->get('slim_framework.path.provider');
         $providersNameSpace = "SlimFramework\\Provider\\";
 
         $providers = Directory::turnNameSpacePathIntoArray(

@@ -93,10 +93,7 @@ class DefaultConfiguration implements ConfigurationInterface
 
 
         $configuration['slim_application']['file'] = [
-            'providers' => $configuration['slim_application']['path']['config'] . '/provider/providers.php',
-            'commands' => $configuration['slim_application']['path']['config'] . '/command/commands.php',
-            'database' => $configuration['slim_application']['path']['config'] . '/database/database.php',
-
+            'database' => $configuration['slim_application']['path']['config'] . '/database.php',
             'oauth_private' => $configuration['slim_application']['path']['data'] . '/oauth/keys/private.key',
             'oauth_public' => $configuration['slim_application']['path']['data'] . '/oauth/keys/public.key',
         ];
