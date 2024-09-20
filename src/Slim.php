@@ -182,7 +182,7 @@ class Slim
     public static function getApp(): SlimApp
     {
         define('SLIM_FRAMEWORK_ROOT_PATH', str_replace('/src', '', __DIR__));
-        $array = explode('vendor', SLIM_FRAMEWORK_ROOT_PATH);
+        $array = explode('/vendor', SLIM_FRAMEWORK_ROOT_PATH);
         define('SLIM_APPLICATION_ROOT_PATH', reset($array));
 
         Session::start();
