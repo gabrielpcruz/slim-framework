@@ -2,8 +2,6 @@
 
 namespace SlimFramework;
 
-require './../vendor/autoload.php';
-
 use Adbar\Dot;
 use SlimFramework\Directory\Directory;
 use SlimFramework\Handler\ErrorHandler;
