@@ -46,7 +46,8 @@ class DefaultConfiguration implements ConfigurationInterface
             ]
         ];
 
-        $configuration['slim_application'] = [
+        $configuration['application'] = [
+            'timezone' => 'America/Sao_Paulo',
             'path' => [
                 'tests' => SLIM_APPLICATION_ROOT_PATH . '/tests',
                 'public' => SLIM_APPLICATION_ROOT_PATH . '/public',
@@ -55,7 +56,6 @@ class DefaultConfiguration implements ConfigurationInterface
                 'data' => SLIM_APPLICATION_ROOT_PATH . '/data',
                 'storage' => SLIM_APPLICATION_ROOT_PATH . '/storage',
                 'cache' => SLIM_APPLICATION_ROOT_PATH . '/storage/cache',
-                'database' => SLIM_APPLICATION_ROOT_PATH . '/config/database',
                 'console' => SLIM_APPLICATION_ROOT_PATH . '/src/Console',
                 'migration' => SLIM_APPLICATION_ROOT_PATH . '/src/Migration',
                 'seeder' => SLIM_APPLICATION_ROOT_PATH . '/src/Seeder',
@@ -77,92 +77,83 @@ class DefaultConfiguration implements ConfigurationInterface
                 'files' => [
                     'images' => SLIM_APPLICATION_ROOT_PATH . '/storage/images'
                 ]
-            ]
-        ];
-
-        $configuration['slim_application']['system'] = [
-            'maintenance' => 0,
-            'maintenance_return' => '2023-07-16 12:07',
-            'maintenance_route' => '/maintenance',
-            'guest_routes' => [
-                '/login',
             ],
-            'routes_in_maintenance' => [
-            ],
-        ];
+            'view' => [
+                'path' => SLIM_APPLICATION_ROOT_PATH . '/resources/views',
 
-
-        $configuration['slim_application']['file'] = [
-            'database' => $configuration['slim_application']['path']['config'] . '/database.php',
-            'oauth_private' => $configuration['slim_application']['path']['data'] . '/oauth/keys/private.key',
-            'oauth_public' => $configuration['slim_application']['path']['data'] . '/oauth/keys/public.key',
-        ];
-
-        $configuration['slim_application']['mailer'] = [
-            //PHPMailer settings
-            'phpmailer' => [
-                //Configs
-                'smtp_host' => 'smtp.example.com',
-                'smtp_debug' => SMTP::DEBUG_OFF,
-                'smtp_exceptions' => false,
-
-                'smtp_port' => 465,
-                'smtp_options' => [
-                    'ssl' => [
-                        'verify_peer' => false,
-                        'verify_peer_name' => false,
-                        'allow_self_signed' => true
-                    ]
+                'templates' => [
+                    'api' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/api',
+                    'console' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/console',
+                    'email' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/email',
+                    'error' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/error',
+                    'layout' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/layout',
+                    'site' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/site',
                 ],
 
-                // Auth
-                'username' => 'youremail@gmail.com',
-                'password' => 'yourpasswordemail',
-            ]
-        ];
+                'settings' => [
+                    'cache' => SLIM_APPLICATION_ROOT_PATH . '/storage/cache/views',
+                    'debug' => true,
+                    'auto_reload' => true,
+                ],
 
-        $configuration['slim_application']['error'] = [
-            'slashtrace' => 1, // Exibir erros na tela
-            'error_reporting' => 1,
-            'display_errors' => 1,
-            'display_startup_errors' => 1,
-        ];
+                'assets' => [
+                    // Public assets cache directory
+                    'path' => SLIM_APPLICATION_ROOT_PATH . '/public/assets',
 
+                    // Public url base path
+                    'url_base_path' => SLIM_APPLICATION_ROOT_PATH . '/public/assets',
 
-        $configuration['slim_application']['timezone'] = 'America/Sao_Paulo';
+                    // Internal cache directory for the assets
+                    'cache_path' => SLIM_APPLICATION_ROOT_PATH . '/storage/cache/views',
 
-        $configuration['slim_application']['view'] = [
-            'path' => SLIM_APPLICATION_ROOT_PATH . '/resources/views',
+                    'cache_name' => 'assets-cache',
 
-            'templates' => [
-                'api' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/api',
-                'console' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/console',
-                'email' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/email',
-                'error' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/error',
-                'layout' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/layout',
-                'site' => SLIM_APPLICATION_ROOT_PATH . '/resources/views/site',
+                    //  Should be set to 1 (enabled) in production
+                    'minify' => 1,
+                ]
             ],
-
-            'settings' => [
-                'cache' => SLIM_APPLICATION_ROOT_PATH . '/storage/cache/views',
-                'debug' => true,
-                'auto_reload' => true,
+            'system' => [
+                'maintenance' => 0,
+                'maintenance_return' => '2023-07-16 12:07',
+                'maintenance_route' => '/maintenance',
+                'guest_routes' => [
+                    '/login',
+                ],
+                'routes_in_maintenance' => [
+                ],
             ],
+            'file' => [
+                'database' => $configuration['application']['path']['config'] . '/database.php',
+                'oauth_private' => $configuration['application']['path']['data'] . '/oauth/keys/private.key',
+                'oauth_public' => $configuration['application']['path']['data'] . '/oauth/keys/public.key',
+            ],
+            'mailer' => [
+                //PHPMailer settings
+                'phpmailer' => [
+                    //Configs
+                    'smtp_host' => 'smtp.example.com',
+                    'smtp_debug' => SMTP::DEBUG_OFF,
+                    'smtp_exceptions' => false,
 
-            'assets' => [
-                // Public assets cache directory
-                'path' => SLIM_APPLICATION_ROOT_PATH . '/public/assets',
+                    'smtp_port' => 465,
+                    'smtp_options' => [
+                        'ssl' => [
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                            'allow_self_signed' => true
+                        ]
+                    ],
 
-                // Public url base path
-                'url_base_path' => SLIM_APPLICATION_ROOT_PATH . '/public/assets',
-
-                // Internal cache directory for the assets
-                'cache_path' => SLIM_APPLICATION_ROOT_PATH . '/storage/cache/views',
-
-                'cache_name' => 'assets-cache',
-
-                //  Should be set to 1 (enabled) in production
-                'minify' => 1,
+                    // Auth
+                    'username' => 'youremail@gmail.com',
+                    'password' => 'yourpasswordemail',
+                ]
+            ],
+            'error' => [
+                'slashtrace' => 1, // Exibir erros na tela
+                'error_reporting' => 1,
+                'display_errors' => 1,
+                'display_startup_errors' => 1,
             ]
         ];
 

@@ -202,12 +202,12 @@ class Slim
 
         $settings = self::settings();
 
-        error_reporting($settings->get('slim_application.error.error_reporting'));
-        ini_set('display_errors', $settings->get('slim_application.error.display_errors'));
-        ini_set('display_startup_errors', $settings->get('slim_application.error.display_startup_errors'));
+        error_reporting($settings->get('application.error.error_reporting'));
+        ini_set('display_errors', $settings->get('application.error.display_errors'));
+        ini_set('display_startup_errors', $settings->get('application.error.display_startup_errors'));
 
         // Timezone
-        date_default_timezone_set($settings->get('slim_application.timezone'));
+        date_default_timezone_set($settings->get('application.timezone'));
 
         return $app;
     }
@@ -272,8 +272,8 @@ class Slim
     {
         $settings = self::settings();
 
-        define('STORAGE_PATH', $settings->get('slim_application.path.storage'));
-        define('PUBLIC_PATH', $settings->get('slim_application.path.public'));
+        define('STORAGE_PATH', $settings->get('application.path.storage'));
+        define('PUBLIC_PATH', $settings->get('application.path.public'));
     }
 
     /**

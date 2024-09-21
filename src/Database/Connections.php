@@ -18,13 +18,13 @@ class Connections
         $databaseConnections = [];
 
         try {
-            $hasDatabaseConfiguration = Slim::settings()->has('slim_application.file.database');
+            $hasDatabaseConfiguration = Slim::settings()->has('application.file.database');
 
             if (!$hasDatabaseConfiguration) {
                 return $databaseConnections;
             }
 
-            $conections = (require_once Slim::settings()->get('slim_application.file.database'));
+            $conections = (require_once Slim::settings()->get('application.file.database'));
 
             if (!is_array($conections)) {
                 return $databaseConnections;
