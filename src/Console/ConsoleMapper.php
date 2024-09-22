@@ -26,47 +26,19 @@ class ConsoleMapper
 
         $excludePaths = $this->getExcludedPaths();
 
-        // Seeder
-        $seederNamespace = "App\\Seeder\\";
-        $seederPath = Slim::settings()->get('application.path.slim.seeder');
+        // Slim Framework Console
+        $commands = $this->slimFrameworkConsole($excludeClasses, $excludePaths, $commands);
 
-        $seederCommands = Directory::turnNameSpacePathIntoArray(
-            $seederPath,
-            $seederNamespace,
+        $appConsoleNamespace = "App\\Console\\";
+        $consolePath = Slim::settings()->get('application.path.console');
+
+        $appConsole = Directory::turnNameSpacePathIntoArray(
+            $consolePath,
+            $appConsoleNamespace,
             $excludeClasses
         );
 
-        // Console
-        $consoleCommands = [];
-        $consoleNamespace = "App\\Console\\";
-        $consolePath = Slim::settings()->get('application.path.console');
-
-        $consoleCommands = Directory::turnNameSpacePathIntoArray(
-            $consolePath,
-            $consoleNamespace,
-            $excludeClasses,
-            $excludePaths
-        );
-
-        $commands = array_merge($commands, $seederCommands);
-        $commands = array_merge($commands, $consoleCommands);
-
-        // Slim
-        $slimPaths = Slim::settings()->get('application.path.slim.console');
-
-        foreach ($slimPaths as $slimPath) {
-            $namespace = Directory::turnPathIntoNameSpace($slimPath);
-            $arr = Directory::turnNameSpacePathIntoArray(
-                $slimPath,
-                $namespace,
-                $excludeClasses,
-                $excludePaths
-            );
-
-            $commands = array_merge($commands, $arr);
-        }
-
-        return $commands;
+        return array_merge($commands, $appConsole);
     }
 
     /**
@@ -93,5 +65,56 @@ class ConsoleMapper
             'Migration',
             'Slim'
         ];
+    }
+
+    /**
+     * @param array $excludeClasses
+     * @param array $excludePaths
+     * @param array $commands
+     * @return array
+     */
+    private function slimFrameworkConsole(array $excludeClasses, array $excludePaths, array $commands): array
+    {
+        // Seeder
+        $seederNamespace = "App\\Seeder\\";
+        $seederPath = Slim::settings()->get('slim_framework.path.slim.seeder');
+
+        $seederCommands = Directory::turnNameSpacePathIntoArray(
+            $seederPath,
+            $seederNamespace,
+            $excludeClasses
+        );
+
+        // Console
+        $consoleCommands = [];
+        $consoleNamespace = "App\\Console\\";
+        $consolePath = Slim::settings()->get('slim_framework.path.console');
+
+        $consoleCommands = Directory::turnNameSpacePathIntoArray(
+            $consolePath,
+            $consoleNamespace,
+            $excludeClasses,
+            $excludePaths
+        );
+
+        $commands = array_merge($commands, $seederCommands);
+        $commands = array_merge($commands, $consoleCommands);
+
+        // Slim
+        $slimPaths = Slim::settings()->get('slim_framework.path.slim.console');
+
+        foreach ($slimPaths as $slimPath) {
+            $namespace = Directory::turnPathIntoNameSpace($slimPath);
+            $arr = Directory::turnNameSpacePathIntoArray(
+                $slimPath,
+                $namespace,
+                $excludeClasses,
+                $excludePaths
+            );
+
+            $commands = array_merge($commands, $arr);
+        }
+
+        return $commands;
     }
 }

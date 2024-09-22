@@ -59,18 +59,6 @@ class DefaultConfiguration implements ConfigurationInterface
                 'console' => SLIM_APPLICATION_ROOT_PATH . '/app/Console',
                 'migration' => SLIM_APPLICATION_ROOT_PATH . '/app/Migration',
                 'seeder' => SLIM_APPLICATION_ROOT_PATH . '/app/Seeder',
-                'slim' => [
-                    'console' => [
-                        'cache' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Cache',
-                        'database' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Database',
-                        'entity' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Entity',
-                        'migration' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Migration',
-                        'seeder' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Seeder',
-                    ],
-                    'migration' => SLIM_APPLICATION_ROOT_PATH . '/app/Migration',
-                    'seeder' => SLIM_APPLICATION_ROOT_PATH . '/app/Seeder',
-                    'twig_extensions' => SLIM_APPLICATION_ROOT_PATH . '/app/Twig',
-                ],
                 'provider' => SLIM_APPLICATION_ROOT_PATH . '/app/Provider',
                 'repository' => SLIM_APPLICATION_ROOT_PATH . '/app/Repository',
                 'entity' => SLIM_APPLICATION_ROOT_PATH . '/app/Entity',
