@@ -38,7 +38,7 @@ trait MigrationTrait
      */
     private function prepareMigrations(): array
     {
-        $pathMigration = Slim::settings()->get('path.migration');
+        $pathMigration = Slim::settings()->get('application.path.migration');
 
         $excludeFiles = [];
 
@@ -48,7 +48,7 @@ trait MigrationTrait
 
         $migrations = Directory::turnNameSpacePathIntoArray(
             $pathMigration,
-            "\\SlimFramework\\Migration\\",
+            "\\App\\Migration\\",
             $excludeFiles,
             $ExcludePaths
         );
