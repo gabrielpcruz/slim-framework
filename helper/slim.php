@@ -1,7 +1,7 @@
 <?php
 
 use SlimFramework\src\Slim;
-use SlimFramework\src\Console\ConsoleMapper;
+use SlimFramework\Console\ConsoleMapper;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Illuminate\Database\Query\Builder;
