@@ -122,11 +122,6 @@ class DefaultConfiguration implements ConfigurationInterface
                 'routes_in_maintenance' => [
                 ],
             ],
-            'file' => [
-                'database' => $configuration['application']['path']['config'] . '/database.php',
-                'oauth_private' => $configuration['application']['path']['data'] . '/oauth/keys/private.key',
-                'oauth_public' => $configuration['application']['path']['data'] . '/oauth/keys/public.key',
-            ],
             'mailer' => [
                 //PHPMailer settings
                 'phpmailer' => [
@@ -155,6 +150,12 @@ class DefaultConfiguration implements ConfigurationInterface
                 'display_errors' => 1,
                 'display_startup_errors' => 1,
             ]
+        ];
+
+        $configuration['application']['file'] = [
+            'database' => $configuration['application']['path']['config'] . '/database.php',
+            'oauth_private' => $configuration['application']['path']['data'] . '/oauth/keys/private.key',
+            'oauth_public' => $configuration['application']['path']['data'] . '/oauth/keys/public.key',
         ];
 
         return $configuration;

@@ -11,18 +11,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 abstract class ApiAbstractController extends AbstractController
 {
     /**
-     * @var Dynamic
+     * @var Dynamic|null
      */
-    protected Dynamic $payloadReponse;
-
-    /**
-     * @param ContainerInterface $container
-     */
-    public function __construct(ContainerInterface $container)
-    {
-        $this->initPayloadResponse();
-        parent::__construct($container);
-    }
+    protected ?Dynamic $payloadReponse;
 
     /**
      * @param ResponseInterface $response
@@ -53,18 +44,6 @@ abstract class ApiAbstractController extends AbstractController
     }
 
     /**
-     * @return void
-     */
-    private function initPayloadResponse(): void
-    {
-        $this->payloadReponse = new Dynamic();
-
-        $this->payloadReponse->code = 200;
-        $this->payloadReponse->message = "";
-        $this->payloadReponse->data = [];
-    }
-
-    /**
      * @param Request $request
      * @return Dynamic
      */
@@ -78,6 +57,16 @@ abstract class ApiAbstractController extends AbstractController
      */
     protected function payloadResponse(): Dynamic
     {
+        if ($this->payloadReponse instanceof Dynamic) {
+            return $this->payloadReponse;
+        }
+
+        $this->payloadReponse = new Dynamic();
+
+        $this->payloadReponse->code = 200;
+        $this->payloadReponse->message = "";
+        $this->payloadReponse->data = [];
+
         return $this->payloadReponse;
     }
 }

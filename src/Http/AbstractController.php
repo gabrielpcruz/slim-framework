@@ -5,25 +5,11 @@ namespace SlimFramework\Http;
 use SlimFramework\Slim;
 use SlimFramework\Repository\RepositoryManager;
 use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Slim\Flash\Messages;
 
 abstract class AbstractController
 {
-    /**
-     * @var ContainerInterface
-     */
-    protected ContainerInterface $container;
-
-    /**
-     * @param ContainerInterface $container
-     */
-    public function __construct(ContainerInterface $container)
-    {
-        $this->container = $container;
-    }
-
     /**
      * @return RepositoryManager
      * @throws ContainerExceptionInterface
@@ -31,7 +17,7 @@ abstract class AbstractController
      */
     protected function getRepositoryManager(): RepositoryManager
     {
-        return $this->container->get(RepositoryManager::class);
+        return Slim::container()->get(RepositoryManager::class);
     }
 
     /**

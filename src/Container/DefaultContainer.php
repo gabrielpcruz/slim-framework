@@ -4,7 +4,7 @@ namespace SlimFramework\Container;
 
 use Adbar\Dot;
 use SlimFramework\Configuration\ConfigurationInterface;
-use SlimFramework\Repository\User\AccessTokenAbstractRepository;
+use SlimFramework\Repository\User\AccessTokenRepository;
 use SlimFramework\Service\Token\AuthorizationServer;
 use SlimFramework\Service\Token\AuthorizationServer as SlimAuthorizationServer;
 use Slim\App;
@@ -103,8 +103,8 @@ class DefaultContainer implements SlimContainerApp
                 /** @var RepositoryManager $repositoryManager */
                 $repositoryManager = $container->get(RepositoryManager::class);
 
-                /** @var AccessTokenAbstractRepository $accessTokenRepository */
-                $accessTokenRepository = $repositoryManager->get(AccessTokenAbstractRepository::class);
+                /** @var AccessTokenRepository $accessTokenRepository */
+                $accessTokenRepository = $repositoryManager->get(AccessTokenRepository::class);
 
                 $beareValidator = new BearerTokenValidator($accessTokenRepository);
                 $beareValidator->setPublicKey(new CryptKey($oauth2PublicKey));

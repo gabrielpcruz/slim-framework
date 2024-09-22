@@ -3,11 +3,11 @@
 namespace SlimFramework\Service\Token;
 
 use SlimFramework\App;
-use SlimFramework\Repository\User\AccessTokenAbstractRepository;
-use SlimFramework\Repository\User\ClientAbstractRepository;
-use SlimFramework\Repository\User\RefreshTokenAbstractRepository;
-use SlimFramework\Repository\User\ScopeAbstractRepository;
-use SlimFramework\Repository\User\UserAbstractRepository;
+use SlimFramework\Repository\User\AccessTokenRepository;
+use SlimFramework\Repository\User\ClientRepository;
+use SlimFramework\Repository\User\RefreshTokenRepository;
+use SlimFramework\Repository\User\ScopeRepository;
+use SlimFramework\Repository\User\UserRepository;
 use SlimFramework\Slim\Repository\RepositoryManager;
 use DI\DependencyException;
 use DI\NotFoundException;
@@ -56,14 +56,14 @@ class AuthorizationServer extends AbstractService
         /** @var RepositoryManager $repositoryManager */
         $repositoryManager = App::container()->get(RepositoryManager::class);
 
-        /** @var ClientAbstractRepository $clientRepository */
-        $clientRepository = $repositoryManager->get(ClientAbstractRepository::class);
+        /** @var ClientRepository $clientRepository */
+        $clientRepository = $repositoryManager->get(ClientRepository::class);
 
-        /** @var ScopeAbstractRepository $scopeRepository */
-        $scopeRepository = $repositoryManager->get(ScopeAbstractRepository::class);
+        /** @var ScopeRepository $scopeRepository */
+        $scopeRepository = $repositoryManager->get(ScopeRepository::class);
 
-        /** @var AccessTokenAbstractRepository $tokenRepository */
-        $tokenRepository = $repositoryManager->get(AccessTokenAbstractRepository::class);
+        /** @var AccessTokenRepository $tokenRepository */
+        $tokenRepository = $repositoryManager->get(AccessTokenRepository::class);
 
         $server = new LeagueAuthorizationServer(
             $clientRepository,
@@ -73,11 +73,11 @@ class AuthorizationServer extends AbstractService
             $this->encryption_key
         );
 
-        /** @var UserAbstractRepository $userRepository */
-        $userRepository = $repositoryManager->get(UserAbstractRepository::class);
+        /** @var UserRepository $userRepository */
+        $userRepository = $repositoryManager->get(UserRepository::class);
 
-        /** @var RefreshTokenAbstractRepository $refreshTokenRepository */
-        $refreshTokenRepository = $repositoryManager->get(RefreshTokenAbstractRepository::class);
+        /** @var RefreshTokenRepository $refreshTokenRepository */
+        $refreshTokenRepository = $repositoryManager->get(RefreshTokenRepository::class);
 
         $refreshTokenExpiryTime = datePeriod(0, 1);
 

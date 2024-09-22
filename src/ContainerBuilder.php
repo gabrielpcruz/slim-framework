@@ -26,8 +26,8 @@ final class ContainerBuilder
                 }
             ])
             ->addDefinitions($this->getDefinitions())
-//            ->enableCompilation(__DIR__ . '/../storage/cache/container')
-//            ->writeProxiesToFile(true, __DIR__ . '/../storage/cache/proxy')
+            ->enableCompilation(SLIM_APPLICATION_ROOT_PATH . '/storage/cache/container')
+            ->writeProxiesToFile(true, SLIM_APPLICATION_ROOT_PATH . '/storage/cache/proxy')
             ->build();
     }
 
@@ -39,8 +39,8 @@ final class ContainerBuilder
         $definitions = [];
 
         $controllers = Directory::turnNameSpacePathIntoArray(
-            __DIR__ . '/../src/Http',
-            "SlimFramework\\Http\\",
+            SLIM_APPLICATION_ROOT_PATH . '/app/Http',
+            "App\\Http\\",
             [
                 "AbstractController.php",
                 "SiteAbstractController.php",

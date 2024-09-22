@@ -3,7 +3,9 @@
 namespace SlimFramework;
 
 use Adbar\Dot;
+use DomainException;
 use Slim\Factory\AppFactory;
+use Slim\Factory\Psr17\ServerRequestCreator;
 use SlimFramework\Directory\Directory;
 use SlimFramework\Handler\ErrorHandler;
 use SlimFramework\Handler\HttpErrorHandler;
@@ -119,20 +121,6 @@ class Slim
     }
 
     /**
-     * @throws DependencyException
-     * @throws NotFoundException
-     * @throws Exception
-     */
-    public static function getInstace()
-    {
-        if (!isset(self::$app)) {
-            self::$app = self::getContainer()->get(SlimApp::class);
-        }
-
-        return self::$app;
-    }
-
-    /**
      * @return Dot
      * @throws ContainerExceptionInterface
      * @throws DependencyException
@@ -143,30 +131,32 @@ class Slim
     {
         $settings = 'settings';
 
-        return self::getInstace()->getContainer()->get($settings);
+        return self::container()->get($settings);
     }
 
     /**
      * @return ContainerInterface
-     * @throws DependencyException
-     * @throws NotFoundException
      */
     public static function container(): ContainerInterface
     {
-        return self::getInstace()->getContainer();
+        if (!isset(self::$container)) {
+            throw new DomainException('The container is not set!');
+        }
+
+        return self::$container;
     }
 
     /**
      * @return Messages
-     * @throws DependencyException
-     * @throws NotFoundException
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public static function flash(): Messages
     {
         $flash = 'flash';
 
         if (!isset(self::$flash)) {
-            self::$flash = self::getContainer()->get($flash);
+            self::$flash = self::container()->get($flash);
         }
 
         return self::$flash;
@@ -182,19 +172,27 @@ class Slim
      */
     public static function getApp(): SlimApp
     {
+//        define('SLIM_FRAMEWORK_ROOT_PATH', str_replace('/src', '', __DIR__));
+//        $array = explode('/vendor', SLIM_FRAMEWORK_ROOT_PATH);
+//        define('SLIM_APPLICATION_ROOT_PATH', reset($array));
+
         define('SLIM_FRAMEWORK_ROOT_PATH', str_replace('/src', '', __DIR__));
-        $array = explode('/vendor', SLIM_FRAMEWORK_ROOT_PATH);
-        define('SLIM_APPLICATION_ROOT_PATH', reset($array));
+        define('SLIM_APPLICATION_ROOT_PATH', str_replace('/framework/src', '', __DIR__));
+
 
         Session::start();
 
         self::$container = (new ContainerBuilder())->build();
         $app = AppFactory::createFromContainer(self::$container);
         self::$container->set(SlimApp::class, $app);
+        self::$app = $app;
+
+        (require self::settings()->get('application.path.config') . '/routes/web.php')($app);
+        (require self::settings()->get('application.path.config') . '/routes/api.php')($app);
 
 
         self::defineConstants();
-//        self::cacheRoutes($app);
+        self::cacheRoutes($app);
 
         self::provide();
 
@@ -214,20 +212,6 @@ class Slim
         date_default_timezone_set($settings->get('application.timezone'));
 
         return $app;
-    }
-
-    /**
-     * @throws DependencyException
-     * @throws NotFoundException
-     * @throws Exception
-     */
-    private static function getContainer(): Container
-    {
-        if (!isset(self::$container)) {
-            self::$container = (new ContainerBuilder())->build();
-        }
-
-        return self::$container;
     }
 
     /**

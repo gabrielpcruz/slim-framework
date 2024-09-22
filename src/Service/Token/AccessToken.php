@@ -3,9 +3,9 @@
 namespace SlimFramework\Service\Token;
 
 use SlimFramework\Entity\User\ClientEntity;
-use SlimFramework\Repository\User\AccessTokenAbstractRepository;
-use SlimFramework\Repository\User\ClientAbstractRepository;
-use SlimFramework\Repository\User\UserAbstractRepository;
+use SlimFramework\Repository\User\AccessTokenRepository;
+use SlimFramework\Repository\User\ClientRepository;
+use SlimFramework\Repository\User\UserRepository;
 use ReflectionException;
 use SlimFramework\Service\AbstractService;
 
@@ -17,7 +17,7 @@ class AccessToken extends AbstractService
      */
     protected function getRepositoryClass(): string
     {
-        return AccessTokenAbstractRepository::class;
+        return AccessTokenRepository::class;
     }
 
     /**
@@ -43,8 +43,8 @@ class AccessToken extends AbstractService
      */
     private function getClientByUserPassword(array $data): object
     {
-        /** @var UserAbstractRepository $userRepository */
-        $userRepository = $this->getRepository(UserAbstractRepository::class);
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->getRepository(UserRepository::class);
 
         $user = $userRepository->getUserEntityByCredentials($data);
 
@@ -58,8 +58,8 @@ class AccessToken extends AbstractService
      */
     private function getClientByIdentifier(array $data): ?ClientEntity
     {
-        /** @var ClientAbstractRepository $clientRepository */
-        $clientRepository = $this->getRepository(ClientAbstractRepository::class);
+        /** @var ClientRepository $clientRepository */
+        $clientRepository = $this->getRepository(ClientRepository::class);
 
         return $clientRepository->getClientEntityByCredentials(
             $data
