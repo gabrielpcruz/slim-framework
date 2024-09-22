@@ -1,24 +1,23 @@
 <?php
 
+require_once __DIR__ . '/../../../autoload.php';
+
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
+
 use SlimFramework\Slim;
 
 try {
-    $container = Slim::getApp();
+    Slim::bootstrap();
 
     if (!Slim::isConsole()) {
         throw new DomainException('Only CLI allowed. Script stopped.');
     }
 
-    $console = getConsole($container);
+    $console = getConsole(Slim::container());
 
     $console->run();
-} catch (
-Exception|
-NotFoundExceptionInterface|
-ContainerExceptionInterface $exception
-) {
+} catch (Exception|NotFoundExceptionInterface|ContainerExceptionInterface $exception) {
     die($exception->getMessage());
 }
 

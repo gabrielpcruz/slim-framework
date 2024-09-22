@@ -170,7 +170,7 @@ class Slim
      * @throws NotFoundExceptionInterface
      * @throws Exception
      */
-    public static function getApp(): SlimApp
+    public static function bootstrap(): SlimApp
     {
         define('SLIM_FRAMEWORK_ROOT_PATH', str_replace('/src', '', __DIR__));
         $array = explode('/vendor', SLIM_FRAMEWORK_ROOT_PATH);
