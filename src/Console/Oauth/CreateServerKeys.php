@@ -26,7 +26,7 @@ class CreateServerKeys extends Console
      */
     protected function configure(): void
     {
-        $this->setName('oauth:slim:create-server-keys');
+        $this->setName('slim:create-server-keys');
         $this->setDescription('Create the keys of oauth.');
     }
 

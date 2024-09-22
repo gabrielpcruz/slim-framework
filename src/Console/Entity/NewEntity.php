@@ -17,7 +17,7 @@ class NewEntity extends Console
      */
     protected function configure(): void
     {
-        $this->setName('entity:slim:new');
+        $this->setName('slim:create-entity');
         $this->setDescription('Create a full new Entity (Entity/Repository).');
     }
 

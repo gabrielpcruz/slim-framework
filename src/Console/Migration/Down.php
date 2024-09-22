@@ -18,7 +18,7 @@ class Down extends ConsoleMigration
      */
     protected function configure(): void
     {
-        $this->setName('migration:slim:down');
+        $this->setName('slim:migration-down');
         $this->setDescription('Drop all tables of database.');
     }
 

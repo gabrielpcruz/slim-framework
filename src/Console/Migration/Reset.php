@@ -18,7 +18,7 @@ class Reset extends ConsoleMigration
      */
     protected function configure(): void
     {
-        $this->setName('migration:slim:reset');
+        $this->setName('slim:migration-reset');
         $this->setDescription('Drop all tables of database and run all migrations.');
     }
 

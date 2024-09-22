@@ -16,7 +16,7 @@ class Container extends Console
      */
     protected function configure(): void
     {
-        $this->setName('cache:slim:clear-container');
+        $this->setName('slim:clear-cache-container');
         $this->setDescription('Clear the container cache.');
     }
 

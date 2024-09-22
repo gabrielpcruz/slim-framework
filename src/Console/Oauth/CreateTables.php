@@ -23,7 +23,7 @@ class CreateTables extends ConsoleMigration
      */
     protected function configure(): void
     {
-        $this->setName('oauth:slim:create-tables');
+        $this->setName('slim:create-tables');
         $this->setDescription('Create the tables from oauth.');
     }
 

@@ -20,7 +20,7 @@ class Seed extends Console
      */
     protected function configure(): void
     {
-        $this->setName('seeder:slim:seed');
+        $this->setName('slim:seed');
         $this->setDescription('Run the seeders commands presents on "SlimFramework\\Seeder" namespace.');
     }
 

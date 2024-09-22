@@ -18,7 +18,7 @@ class Migrate extends ConsoleMigration
      */
     protected function configure(): void
     {
-        $this->setName('migration:slim:migrate');
+        $this->setName('slim:migration-migrate');
         $this->setDescription('Run all migrations on database presents on "SlimFramework\\Migration" namespace.');
     }
 

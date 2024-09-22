@@ -16,7 +16,7 @@ class View extends Console
      */
     protected function configure(): void
     {
-        $this->setName('cache:slim:clear-view');
+        $this->setName('slim:clear-cache-view');
         $this->setDescription('Clear the view cache.');
     }
 
