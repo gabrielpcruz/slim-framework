@@ -48,6 +48,7 @@ class ConsoleMapper
     {
         return [
             "ConsoleMigration.php",
+            "ConsoleMapper.php",
             "Console.php",
             "MigrationTrait.php",
             "Migration.php",
@@ -75,19 +76,7 @@ class ConsoleMapper
      */
     private function slimFrameworkConsole(array $excludeClasses, array $excludePaths, array $commands): array
     {
-        // Seeder
-        $seederNamespace = "App\\Seeder\\";
-        $seederPath = Slim::settings()->get('slim_framework.path.slim.seeder');
-
-        $seederCommands = Directory::turnNameSpacePathIntoArray(
-            $seederPath,
-            $seederNamespace,
-            $excludeClasses
-        );
-
-        // Console
-        $consoleCommands = [];
-        $consoleNamespace = "App\\Console\\";
+        $consoleNamespace = "SlimFramework\\Console\\";
         $consolePath = Slim::settings()->get('slim_framework.path.console');
 
         $consoleCommands = Directory::turnNameSpacePathIntoArray(
@@ -97,24 +86,6 @@ class ConsoleMapper
             $excludePaths
         );
 
-        $commands = array_merge($commands, $seederCommands);
-        $commands = array_merge($commands, $consoleCommands);
-
-        // Slim
-        $slimPaths = Slim::settings()->get('slim_framework.path.slim.console');
-
-        foreach ($slimPaths as $slimPath) {
-            $namespace = Directory::turnPathIntoNameSpace($slimPath);
-            $arr = Directory::turnNameSpacePathIntoArray(
-                $slimPath,
-                $namespace,
-                $excludeClasses,
-                $excludePaths
-            );
-
-            $commands = array_merge($commands, $arr);
-        }
-
-        return $commands;
+        return array_merge($commands, $consoleCommands);
     }
 }
