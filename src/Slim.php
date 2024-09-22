@@ -147,6 +147,18 @@ class Slim
     }
 
     /**
+     * @return SlimApp
+     */
+    public static function getInstance(): SlimApp
+    {
+        if (!isset(self::$app)) {
+            throw new DomainException('The App is not set!');
+        }
+
+        return self::$app;
+    }
+
+    /**
      * @return Messages
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
