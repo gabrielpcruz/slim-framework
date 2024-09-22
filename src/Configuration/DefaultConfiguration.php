@@ -56,9 +56,9 @@ class DefaultConfiguration implements ConfigurationInterface
                 'data' => SLIM_APPLICATION_ROOT_PATH . '/data',
                 'storage' => SLIM_APPLICATION_ROOT_PATH . '/storage',
                 'cache' => SLIM_APPLICATION_ROOT_PATH . '/storage/cache',
-                'console' => SLIM_APPLICATION_ROOT_PATH . '/src/Console',
-                'migration' => SLIM_APPLICATION_ROOT_PATH . '/src/Migration',
-                'seeder' => SLIM_APPLICATION_ROOT_PATH . '/src/Seeder',
+                'console' => SLIM_APPLICATION_ROOT_PATH . '/app/Console',
+                'migration' => SLIM_APPLICATION_ROOT_PATH . '/app/Migration',
+                'seeder' => SLIM_APPLICATION_ROOT_PATH . '/app/Seeder',
                 'slim' => [
                     'console' => [
                         'cache' => SLIM_APPLICATION_ROOT_PATH . '/app/Console/Cache',
