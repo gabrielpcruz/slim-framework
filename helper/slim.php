@@ -63,7 +63,7 @@ if (!function_exists('redirect')) {
      */
     function redirect($route): ResponseInterface
     {
-        $response = Slim::getInstace()->getResponseFactory()->createResponse();
+        $response = Slim::getInstance()->getResponseFactory()->createResponse();
 
         return $response->withHeader('Location', $route);
     }
