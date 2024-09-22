@@ -52,17 +52,6 @@ class DefaultContainer implements SlimContainerApp
 
                 return new Dot($configurations);
             },
-            App::class => function (ContainerInterface $container) {
-                $app = AppFactory::createFromContainer($container);
-
-//                // Adding routes of application
-//                (require __DIR__ . '/../routes/web.php')($app);
-//                (require __DIR__ . '/../routes/api.php')($app);
-
-                $app->addRoutingMiddleware();
-
-                return $app;
-            },
 
             Twig::class => function (ContainerInterface $container) {
                 $settings = $container->get('settings');

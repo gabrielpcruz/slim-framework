@@ -3,6 +3,7 @@
 namespace SlimFramework;
 
 use Adbar\Dot;
+use Slim\Factory\AppFactory;
 use SlimFramework\Directory\Directory;
 use SlimFramework\Handler\ErrorHandler;
 use SlimFramework\Handler\HttpErrorHandler;
@@ -187,7 +188,10 @@ class Slim
 
         Session::start();
 
-        $app = self::getInstace();
+        self::$container = (new ContainerBuilder())->build();
+        $app = AppFactory::createFromContainer(self::$container);
+        self::$container->set(SlimApp::class, $app);
+
 
         self::defineConstants();
 //        self::cacheRoutes($app);
