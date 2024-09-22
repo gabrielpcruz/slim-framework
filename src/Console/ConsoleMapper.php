@@ -63,8 +63,7 @@ class ConsoleMapper
     private function getExcludedPaths(): array
     {
         return [
-            'Migration',
-            'Slim'
+
         ];
     }
 
