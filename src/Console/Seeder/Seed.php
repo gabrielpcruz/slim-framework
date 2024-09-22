@@ -35,11 +35,11 @@ class Seed extends Console
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $seederPath = Slim::settings()->get('path.seeder');
+        $seederPath = Slim::settings()->get('application.path.seeder');
 
         $seederPath = Directory::turnNameSpacePathIntoArray(
             $seederPath,
-            "SlimFramework\\Seeder\\",
+            "App\\Seeder\\",
             [],
             ['Slim']
         );
