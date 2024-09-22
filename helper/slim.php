@@ -1,6 +1,6 @@
 <?php
 
-use SlimFramework\src\Slim;
+use SlimFramework\Slim;
 use SlimFramework\Console\ConsoleMapper;
 use DI\DependencyException;
 use DI\NotFoundException;
