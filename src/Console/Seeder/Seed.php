@@ -39,7 +39,7 @@ class Seed extends Console
 
         $seederPath = Directory::turnNameSpacePathIntoArray(
             $seederPath,
-            "App\\Seeder\\",
+            "\\App\\Seeder\\",
             [],
             ['Slim']
         );
