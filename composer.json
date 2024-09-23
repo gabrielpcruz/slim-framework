@@ -4,6 +4,17 @@
     "type": "library",
     "license": "MIT",
     "minimum-stability": "stable",
+    "keywords": [
+        "microframework",
+        "framework",
+        "slim"
+    ],
+    "authors": [
+        {
+            "name": "Gabriel Cruz",
+            "email": "gabrielpcruz.github@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "SlimFramework\\": "src/"
@@ -12,11 +23,6 @@
             "helper/slim.php"
         ]
     },
-    "authors": [
-        {
-            "name": "Gabriel Cruz"
-        }
-    ],
     "require": {
         "php": ">=8.3",
         "ext-iconv": "*",
