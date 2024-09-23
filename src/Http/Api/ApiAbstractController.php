@@ -13,7 +13,7 @@ abstract class ApiAbstractController extends AbstractController
     /**
      * @var Dynamic|null
      */
-    protected ?Dynamic $payloadReponse;
+    protected ?Dynamic $payloadReponse = null;
 
     /**
      * @param ResponseInterface $response
