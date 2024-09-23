@@ -35,6 +35,8 @@ class DefaultContainer implements SlimContainerApp
                 return $container->get('settings.config');
             },
             'settings' => function () {
+
+                // Framework
                 $configurationClasses = Directory::turnNameSpacePathIntoArray(
                     SLIM_FRAMEWORK_ROOT_PATH . '/src/Configuration',
                     'SlimFramework\\Configuration\\',
@@ -49,6 +51,20 @@ class DefaultContainer implements SlimContainerApp
 
                     $configurations = array_replace_recursive($configurations, ($configurationClass)->configure());
                 }
+
+                // Application
+                $configurationClasses = Directory::turnNameSpacePathIntoArray(
+                    SLIM_APPLICATION_ROOT_PATH . '/app/Configuration',
+                    'App\\Configuration\\'
+                );
+
+                foreach ($configurationClasses as $class) {
+                    /** @var ConfigurationInterface $configurationClass */
+                    $configurationClass = new $class();
+
+                    $configurations = array_replace_recursive($configurations, ($configurationClass)->configure());
+                }
+
 
                 return new Dot($configurations);
             },
