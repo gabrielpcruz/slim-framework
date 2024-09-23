@@ -8,15 +8,12 @@ use Psr\Container\NotFoundExceptionInterface;
 use SlimFramework\Slim;
 
 try {
-    Slim::bootstrap();
-
     if (!Slim::isConsole()) {
         throw new DomainException('Only CLI allowed. Script stopped.');
     }
 
-    $console = getConsole(Slim::container());
-
-    $console->run();
+    Slim::bootstrap();
+    die(getConsole()->run());
 } catch (Exception|NotFoundExceptionInterface|ContainerExceptionInterface $exception) {
     die($exception->getMessage());
 }

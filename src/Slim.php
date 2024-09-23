@@ -294,7 +294,7 @@ class Slim
      */
     public static function isGuestRoute(ServerRequestInterface $request): bool
     {
-        $guestRoutes = Slim::settings()->get('system.guest_routes');
+        $guestRoutes = Slim::settings()->get('application.system.guest_routes');
 
         if (in_array($request->getUri()->getPath(), $guestRoutes)) {
             return true;
@@ -327,7 +327,7 @@ class Slim
      */
     public static function isRouteInMaintenance(ServerRequestInterface $request): bool
     {
-        $routesInMaintenance = Slim::settings()->get('system.routes_in_maintenance');
+        $routesInMaintenance = Slim::settings()->get('application.system.routes_in_maintenance');
 
         if (in_array($request->getUri()->getPath(), $routesInMaintenance)) {
             return true;

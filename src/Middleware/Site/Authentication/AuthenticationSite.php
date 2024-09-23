@@ -27,7 +27,7 @@ class AuthenticationSite extends MiddlewareSite
     public function handle(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (
-            !Slim::settings()->get('system.maintenance') &&
+            !Slim::settings()->get('application.system.maintenance') &&
             !Session::isLoggedIn() &&
             !Slim::isGuestRoute($request)
         ) {

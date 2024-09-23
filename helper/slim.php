@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 if (!function_exists('getConsole')) {
-    function getConsole($container): Application
+    function getConsole(): Application
     {
         $console = new Application();
 
@@ -24,7 +24,7 @@ if (!function_exists('getConsole')) {
         if (!empty($commands)) {
             foreach ($commands as $commandClass) {
                 try {
-                    $console->add($container->get($commandClass));
+                    $console->add(Slim::container()->get($commandClass));
                 } catch (Throwable $throwable) {
                     var_dump("(Console Output).: " . $throwable->getMessage());
                 }
@@ -43,7 +43,7 @@ if (!function_exists('command')) {
      */
     function command($command): string
     {
-        $application = getConsole(Slim::container());
+        $application = getConsole();
         $application->setAutoExit(false);
 
         $input = new ArrayInput($command);
