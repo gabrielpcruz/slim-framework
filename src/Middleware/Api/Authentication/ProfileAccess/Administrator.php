@@ -2,7 +2,7 @@
 
 namespace SlimFramework\Middleware\Api\Authentication\ProfileAccess;
 
-use App\Enum\EnumProfile;
+use SlimFramework\Enum\EnumProfile;
 use DI\DependencyException;
 use DI\NotFoundException;
 use League\OAuth2\Server\Exception\OAuthServerException;

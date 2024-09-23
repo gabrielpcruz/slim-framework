@@ -33,10 +33,10 @@ abstract class ProfileAccess extends MiddlewareApi implements ProfileAccessInter
      */
     protected function getUser(ServerRequestInterface $request): UserEntity
     {
-        $repositoryManager = App::container()->get(RepositoryManager::class);
+        $repositoryManager = Slim::container()->get(RepositoryManager::class);
 
         /** @var BearerTokenValidator $bearerValidator */
-        $bearerValidator = App::container()->get(BearerTokenValidator::class);
+        $bearerValidator = Slim::container()->get(BearerTokenValidator::class);
 
         /** @var UserRepository $userRepository */
         $userRepository = $repositoryManager->get(UserRepository::class);

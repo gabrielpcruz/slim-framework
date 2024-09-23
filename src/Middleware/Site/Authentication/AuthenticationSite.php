@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Middleware\Site\Authentication;
+namespace SlimFramework\Middleware\Site\Authentication;
 
-use App\App;
-use App\Enum\FlashMessage;
-use App\Message\Exception\System\MessageExceptionSystem;
-use App\Slim\Session\Session;
+use Exception;
+use SlimFramework\Slim;
+use SlimFramework\Enum\FlashMessage;
+use SlimFramework\Message\Exception\System\MessageExceptionSystem;
+use SlimFramework\Session\Session;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Psr\Container\ContainerExceptionInterface;
@@ -13,7 +14,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use App\Slim\Middleware\Site\MiddlewareSite;
+use SlimFramework\Middleware\Site\MiddlewareSite;
 
 class AuthenticationSite extends MiddlewareSite
 {
@@ -21,17 +22,14 @@ class AuthenticationSite extends MiddlewareSite
      * @param ServerRequestInterface $request
      * @param RequestHandlerInterface $handler
      * @return ResponseInterface
-     * @throws DependencyException
-     * @throws NotFoundException
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
+     * @throws Exception
      */
     public function handle(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if (
-            !App::settings()->get('system.maintenance') &&
+            !Slim::settings()->get('system.maintenance') &&
             !Session::isLoggedIn() &&
-            !App::isGuestRoute($request)
+            !Slim::isGuestRoute($request)
         ) {
             flash()->addMessage(FlashMessage::ERROR, MessageExceptionSystem::MES0001);
 
