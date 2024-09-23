@@ -56,7 +56,7 @@ class HttpErrorHandler extends ErrorHandler
             'statusCode' => $errorStruct->statusCode,
             'error' => [
                 'type' => $errorStruct->type,
-                'description' => mb_convert_encoding($errorStruct->description, 'ISO-8859-1', 'UTF-8'),
+                'description' => $errorStruct->description,
                 'iternal_code' => $errorStruct->internalCode,
             ],
         ];
