@@ -24,13 +24,6 @@ use Twig\Error\SyntaxError;
  */
 class ErrorHandler implements ErrorHandlerInterface
 {
-    private ContainerInterface $container;
-
-    public function __construct(ContainerInterface $container)
-    {
-        $this->container = $container;
-    }
-
     /**
      * @throws NotFoundExceptionInterface
      * @throws SyntaxError
@@ -45,9 +38,6 @@ class ErrorHandler implements ErrorHandlerInterface
         bool $logErrors,
         bool $logErrorDetails
     ): ResponseInterface {
-        /** @var Twig $view */
-        $view = $this->container->get(Twig::class);
-
         $response = new Response();
         $message = "";
 
@@ -76,7 +66,7 @@ class ErrorHandler implements ErrorHandlerInterface
 
         $code = ($exception->getCode() > 99 && $exception->getCode() < 600) ? $exception->getCode() : 500;
 
-        $pathTemplate = Slim::settings()->get('view.templates.error');
+        $pathTemplate = Slim::settings()->get('application.view.templates.error');
 
         $exists = file_exists("$pathTemplate/$code/index.twig");
 
@@ -84,7 +74,7 @@ class ErrorHandler implements ErrorHandlerInterface
 
         $response = $response->withStatus($code);
 
-        return $view->render(
+        return Slim::container()->get(Twig::class)->render(
             $response,
             $template,
             compact('message', 'code')
