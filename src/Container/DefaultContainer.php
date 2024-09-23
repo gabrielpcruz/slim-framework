@@ -65,7 +65,6 @@ class DefaultContainer implements SlimContainerApp
                     $configurations = array_replace_recursive($configurations, ($configurationClass)->configure());
                 }
 
-
                 return new Dot($configurations);
             },
 
