@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Middleware\Api\Authentication;
+namespace SlimFramework\Middleware\Api\Authentication;
 
 use SlimFramework\Slim;
 use SlimFramework\Entity\User\ClientEntity;
