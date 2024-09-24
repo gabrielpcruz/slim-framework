@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Middleware\Site\Maintenance;
+namespace SlimFramework\Middleware\Site\Maintenance;
 
-use App\App;
+use SlimFramework\Slim;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Psr\Container\ContainerExceptionInterface;
@@ -10,7 +10,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use App\Slim\Middleware\Middleware;
+use SlimFramework\Middleware\Middleware;
 
 class RoutesInMaintenanceMiddleware extends Middleware
 {
@@ -18,14 +18,11 @@ class RoutesInMaintenanceMiddleware extends Middleware
      * @param ServerRequestInterface $request
      * @param RequestHandlerInterface $handler
      * @return ResponseInterface
-     * @throws DependencyException
-     * @throws NotFoundException
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
+     * @throws \Exception
      */
     public function handle(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (App::isRouteInMaintenance($request)) {
+        if (Slim::isRouteInMaintenance($request)) {
             return redirect('/route_maintenance');
         }
 

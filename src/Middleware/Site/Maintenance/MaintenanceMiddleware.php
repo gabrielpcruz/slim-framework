@@ -2,7 +2,7 @@
 
 namespace App\Middleware\Site\Maintenance;
 
-use App\App;
+use SlimFramework\Slim;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Psr\Container\ContainerExceptionInterface;
@@ -10,24 +10,21 @@ use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use App\Slim\Middleware\Site\MiddlewareSite;
+use SlimFramework\Middleware\Site\MiddlewareSite;
 
 class MaintenanceMiddleware extends MiddlewareSite
 {
     /**
-     * @param ServerRequestInterface $request
-     * @param RequestHandlerInterface $handler
-     * @return ResponseInterface
-     * @throws DependencyException
-     * @throws NotFoundException
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
+     * @param \Psr\Http\Message\ServerRequestInterface $request
+     * @param \Psr\Http\Server\RequestHandlerInterface $handler
+     * @return \Psr\Http\Message\ResponseInterface
+     * @throws \Exception
      */
     public function handle(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $isSystemInMaintenance = App::settings()->get('system.maintenance');
-        $isRouteMaintenance = App::isRouteEqualOf($request, '/maintenance');
-        $isRouteLogin = App::isRouteEqualOf($request, '/login');
+        $isSystemInMaintenance = Slim::settings()->get('application.system.maintenance');
+        $isRouteMaintenance = Slim::isRouteEqualOf($request, '/maintenance');
+        $isRouteLogin = Slim::isRouteEqualOf($request, '/login');
 
         if ($isSystemInMaintenance && (!$isRouteMaintenance || $isRouteLogin)) {
             return redirect('/maintenance');
