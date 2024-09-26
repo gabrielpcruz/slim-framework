@@ -33,7 +33,7 @@ class ClientRepository extends AbstractRepository implements ClientRepositoryInt
         $client->setConfidential();
 
         /** @var ClientEntity $client */
-        $client = $this->findOneBy(['identifier' => $clientIdentifier]);
+        $client = $this->findOneBy(['id' => $clientIdentifier]);
         $client->setIdentifier($client->getAttribute('id'));
 
         return $client;
