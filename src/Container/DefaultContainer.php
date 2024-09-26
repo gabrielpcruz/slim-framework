@@ -5,7 +5,7 @@ namespace SlimFramework\Container;
 use Adbar\Dot;
 use SlimFramework\Configuration\ConfigurationInterface;
 use SlimFramework\Repository\User\AccessTokenRepository;
-use SlimFramework\Service\Token\AuthorizationServer;
+use League\OAuth2\Server\AuthorizationServer;
 use SlimFramework\Service\Token\AuthorizationServer as SlimAuthorizationServer;
 use Slim\App;
 use SlimFramework\Directory\Directory;
