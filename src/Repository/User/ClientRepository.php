@@ -34,7 +34,7 @@ class ClientRepository extends AbstractRepository implements ClientRepositoryInt
 
         /** @var ClientEntity $client */
         $client = $this->findOneBy(['identifier' => $clientIdentifier]);
-        $client->setIdentifier($client->id);
+        $client->setIdentifier($client->getAttribute('id'));
 
         return $client;
     }
