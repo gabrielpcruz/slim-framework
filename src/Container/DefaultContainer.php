@@ -107,7 +107,7 @@ class DefaultContainer implements SlimContainerApp
             },
 
             // OAuth
-            SlimAuthorizationServer::class => factory([
+            AuthorizationServer::class => factory([
                 SlimAuthorizationServer::class,
                 'create',
             ]),

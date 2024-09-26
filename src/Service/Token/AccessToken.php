@@ -6,7 +6,6 @@ use SlimFramework\Entity\User\ClientEntity;
 use SlimFramework\Repository\User\AccessTokenRepository;
 use SlimFramework\Repository\User\ClientRepository;
 use SlimFramework\Repository\User\UserRepository;
-use ReflectionException;
 use SlimFramework\Service\AbstractService;
 
 
