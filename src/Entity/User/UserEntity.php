@@ -20,7 +20,7 @@ class UserEntity extends Entity implements UserEntityInterface
      */
     public function getIdentifier(): int
     {
-        return $this->id;
+        return $this->getAttribute('id');
     }
 
     /**
