@@ -48,7 +48,7 @@ class AccessToken extends AbstractService
 
         $client = $user->client()->first();
 
-        $client->setIdentifier($client->id);
+        $client->setIdentifier($client->getAttribute('id'));
 
         return $client;
     }
