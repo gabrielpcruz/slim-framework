@@ -46,7 +46,11 @@ class AccessToken extends AbstractService
 
         $user = $userRepository->getUserEntityByCredentials($data);
 
-        return $user->client()->first();
+        $client = $user->client()->first();
+
+        $client->setIdentifier($client->id);
+
+        return $client;
     }
 
     /**
