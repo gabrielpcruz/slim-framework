@@ -38,10 +38,11 @@ class AccessTokenRepository extends AbstractRepository implements AccessTokenRep
         $accessTokenEntity->expiry_date_time = $accessTokenEntity->getExpiryDateTime();
 
         if ($accessTokenEntity->getUserIdentifier()) {
-            $accessTokenEntity->user_id = $accessTokenEntity->getUserIdentifier();
+            $accessTokenEntity->setAttribute('user_id', $accessTokenEntity->getUserIdentifier());
         }
 
-        $accessTokenEntity->oauth2_client_id = $accessTokenEntity->getClient()->getIdentifier();
+        $accessTokenEntity->setAttribute('oauth2_client_id', $accessTokenEntity->getClient()->getIdentifier());
+
         $this->save($accessTokenEntity);
     }
 
