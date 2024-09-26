@@ -2,13 +2,13 @@
 
 namespace SlimFramework\Service\Token;
 
-use SlimFramework\App;
+use SlimFramework\Slim;
 use SlimFramework\Repository\User\AccessTokenRepository;
 use SlimFramework\Repository\User\ClientRepository;
 use SlimFramework\Repository\User\RefreshTokenRepository;
 use SlimFramework\Repository\User\ScopeRepository;
 use SlimFramework\Repository\User\UserRepository;
-use SlimFramework\Slim\Repository\RepositoryManager;
+use SlimFramework\Repository\RepositoryManager;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Exception;
@@ -18,7 +18,7 @@ use League\OAuth2\Server\Grant\RefreshTokenGrant;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use SlimFramework\Slim\Service\AbstractService;
+use SlimFramework\Service\AbstractService;
 
 class AuthorizationServer extends AbstractService
 {
@@ -51,10 +51,10 @@ class AuthorizationServer extends AbstractService
     public function create(ContainerInterface $container): LeagueAuthorizationServer
     {
         /** @var string $oauth2PrivateKey */
-        $oauth2PrivateKey = App::settings()->get('file.oauth_private');
+        $oauth2PrivateKey = Slim::settings()->get('application.file.oauth_private');
 
         /** @var RepositoryManager $repositoryManager */
-        $repositoryManager = App::container()->get(RepositoryManager::class);
+        $repositoryManager = Slim::container()->get(RepositoryManager::class);
 
         /** @var ClientRepository $clientRepository */
         $clientRepository = $repositoryManager->get(ClientRepository::class);

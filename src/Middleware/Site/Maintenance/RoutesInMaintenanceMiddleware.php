@@ -2,6 +2,7 @@
 
 namespace SlimFramework\Middleware\Site\Maintenance;
 
+use Exception;
 use SlimFramework\Slim;
 use DI\DependencyException;
 use DI\NotFoundException;
@@ -18,7 +19,7 @@ class RoutesInMaintenanceMiddleware extends Middleware
      * @param ServerRequestInterface $request
      * @param RequestHandlerInterface $handler
      * @return ResponseInterface
-     * @throws \Exception
+     * @throws Exception
      */
     public function handle(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {

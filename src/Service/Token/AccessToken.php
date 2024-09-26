@@ -24,7 +24,6 @@ class AccessToken extends AbstractService
      * @param array $data
      *
      * @return ClientEntity|null
-     * @throws ReflectionException
      */
     public function getClientByGrant(array $data): ?ClientEntity
     {
