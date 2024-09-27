@@ -65,7 +65,7 @@ class AuthenticationApi extends MiddlewareApi
             throw new HttpUnauthorizedException($request);
         }
 
-        return $request->withAttribute('oauth_client_id', $client->id);
+        return $request->withAttribute('oauth_client_id', $client->getAttribute('id'));
     }
 
     /**
