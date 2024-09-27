@@ -185,12 +185,6 @@ class Slim
     public static function bootstrap(): SlimApp
     {
         define('SLIM_FRAMEWORK_ROOT_PATH', str_replace('/src', '', __DIR__));
-        $array = explode('/vendor', SLIM_FRAMEWORK_ROOT_PATH);
-        define('SLIM_APPLICATION_ROOT_PATH', reset($array));
-
-//        define('SLIM_FRAMEWORK_ROOT_PATH', str_replace('/src', '', __DIR__));
-//        define('SLIM_APPLICATION_ROOT_PATH', str_replace('/framework/src', '', __DIR__));
-
 
         Session::start();
 
