@@ -34,8 +34,8 @@ class AccessTokenRepository extends AbstractRepository implements AccessTokenRep
     public function persistNewAccessToken(AccessTokenEntityInterface $accessTokenEntity): void
     {
         /** @var AccessTokenEntity $accessTokenEntity */
-        $accessTokenEntity->access_token = $accessTokenEntity->getIdentifier();
-        $accessTokenEntity->expiry_date_time = $accessTokenEntity->getExpiryDateTime();
+        $accessTokenEntity->setAttribute('access_token', $accessTokenEntity->getIdentifier());
+        $accessTokenEntity->setAttribute('expiry_date_time', $accessTokenEntity->getExpiryDateTime());
 
         if ($accessTokenEntity->getUserIdentifier()) {
             $accessTokenEntity->setAttribute('user_id', $accessTokenEntity->getUserIdentifier());

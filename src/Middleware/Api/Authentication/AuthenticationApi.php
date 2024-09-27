@@ -43,7 +43,7 @@ class AuthenticationApi extends MiddlewareApi
     public function authenticate(ServerRequestInterface $request): ServerRequestInterface
     {
         /** @var string $oauth2PublicKey */
-        $oauth2PublicKey = Slim::settings()->get('file.oauth_public');
+        $oauth2PublicKey = Slim::settings()->get('application.file.oauth_public');
 
         /** @var AccessTokenRepository $accessTokenRepository */
         $accessTokenRepository = $this->repositoryManager->get(AccessTokenRepository::class);
