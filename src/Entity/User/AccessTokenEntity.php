@@ -58,7 +58,7 @@ class AccessTokenEntity extends Entity implements AccessTokenEntityInterface
      */
     public function isExpired(): bool
     {
-        $tokenExpiration = DateTime::createFromFormat('Y-m-d H:i:s', $this->expiry_date_time);
+        $tokenExpiration = DateTime::createFromFormat('Y-m-d H:i:s', $this->getAttribute('expiry_date_time'));
         return $tokenExpiration->getTimestamp() <= (new DateTime())->getTimestamp();
     }
 
