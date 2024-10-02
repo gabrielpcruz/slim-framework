@@ -126,4 +126,12 @@ abstract class AbstractRepository
     {
         return $this->entity->getConnection();
     }
+
+    /**
+     * @param Entity $entity
+     */
+    public function delete(Entity $entity): void
+    {
+        $entity->delete();
+    }
 }
