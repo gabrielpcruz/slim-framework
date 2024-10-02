@@ -123,4 +123,18 @@ class Dynamic extends stdClass
 
         return true;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray() : array
+    {
+        $array = [];
+
+        foreach (get_object_vars($this) as $property => $value) {
+            $array[$property] = $value;
+        }
+
+        return $array;
+    }
 }
