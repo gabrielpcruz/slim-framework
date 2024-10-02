@@ -2,6 +2,8 @@
 
 namespace SlimFramework\Service;
 
+use Illuminate\Database\Eloquent\Collection;
+use SlimFramework\Entity\Entity;
 use SlimFramework\Slim;
 use SlimFramework\Repository\AbstractRepository;
 use SlimFramework\Repository\RepositoryManager;
@@ -93,5 +95,22 @@ abstract class AbstractService
     final protected function getRepositoryManager(): RepositoryManager
     {
         return $this->repositoryManager;
+    }
+
+    /**
+     * @return Collection|array
+     */
+    public function all(): Collection|array
+    {
+        return $this->getRepository()->all();
+    }
+
+    /**
+     * @param int $id
+     * @return Entity|null
+     */
+    public function findById(int $id): ?Entity
+    {
+        return $this->getRepository()->findOneBy(['id' => $id]);
     }
 }
