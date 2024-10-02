@@ -2,6 +2,9 @@
 
 namespace SlimFramework\Configuration;
 
+/**
+ * TODO fazer um helper que vai carregar e passar tudo no bootstrap
+ */
 class DefaultConfiguration implements ConfigurationInterface
 {
     public function configure(): array

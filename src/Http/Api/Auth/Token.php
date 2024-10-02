@@ -42,15 +42,13 @@ class Token extends ApiAbstractController
     {
         $data = $request->getParsedBody();
 
-        $client = $this->accessToken->getClientByGrant($data);
-
         $payload = [];
         $payload['grant_type'] = $data['grant_type'];
 
         if ($data['grant_type'] === 'password') {
             $payload['username'] = $data['username'];
             $payload['password'] = $data['password'];
-            $payload['client_id'] = $this->accessToken->getClientByGrant($data)->getIdentifier();
+            $payload['client_id'] = $this->accessToken->getClientByGrant($data)->getAttribute('identifier');
         }
 
         if ($data['grant_type'] === 'refresh_token') {
