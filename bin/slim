@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../../../autoload.php';
 
+define('SLIM_APPLICATION_ROOT_PATH',  str_replace('/vendor/gabrielpcruz/slim-framework/bin', '', __DIR__));
+
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
