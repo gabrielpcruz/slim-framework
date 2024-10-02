@@ -113,4 +113,29 @@ abstract class AbstractService
     {
         return $this->getRepository()->findOneBy(['id' => $id]);
     }
+
+    /**
+     * @param Entity $entity
+     * @return self
+     */
+    public function save(Entity $entity) : self
+    {
+        $this->getRepository()->save($entity);
+
+        return $this;
+    }
+
+    /**
+     * @param Entity $entity
+     * @param array $attributes
+     * @return self
+     */
+    public function update(Entity $entity, array $attributes) : self
+    {
+        $entity->fill($attributes);
+
+        $this->getRepository()->save($entity);
+
+        return $this;
+    }
 }
