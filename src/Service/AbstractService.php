@@ -2,6 +2,7 @@
 
 namespace SlimFramework\Service;
 
+use Illuminate\Contracts\Queue\EntityNotFoundException;
 use Illuminate\Database\Eloquent\Collection;
 use SlimFramework\Entity\Entity;
 use SlimFramework\Slim;
@@ -111,7 +112,13 @@ abstract class AbstractService
      */
     public function findById(int $id): ?Entity
     {
-        return $this->getRepository()->findOneBy(['id' => $id]);
+        $entity = $this->getRepository()->findOneBy(['id' => $id]);
+
+        if (!$entity) {
+            throw new EntityNotFoundException($this->getRepository()->getEntityClass(), $id);
+        }
+
+        return $entity;
     }
 
     /**
@@ -135,6 +142,17 @@ abstract class AbstractService
         $entity->fill($attributes);
 
         $this->getRepository()->save($entity);
+
+        return $this;
+    }
+
+    /**
+     * @param Entity $entity
+     * @return self
+     */
+    public function delete(Entity $entity) : self
+    {
+        $this->getRepository()->delete($entity);
 
         return $this;
     }
