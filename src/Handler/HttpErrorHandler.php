@@ -8,6 +8,7 @@ use SlimFramework\Exception\Entity\InvalidEntityParametersUpdate;
 use SlimFramework\Message\Code;
 use SlimFramework\Message\Message;
 use SlimFramework\Exception\UserNotAllowedException;
+use SlimFramework\Slim;
 use SlimFramework\Utils\Dynamic;
 use Illuminate\Contracts\Queue\EntityNotFoundException;
 use League\OAuth2\Server\Exception\OAuthServerException;
@@ -110,6 +111,7 @@ class HttpErrorHandler extends ErrorHandler
      */
     protected function respond(): ResponseInterface
     {
+        $isShowError = (Slim::settings()->get('application.error.display_errors') === 1);
         $errorStruct = new Dynamic();
 
         $exception = $this->exception;
@@ -117,7 +119,10 @@ class HttpErrorHandler extends ErrorHandler
         $errorStruct->statusCode = 500;
         $errorStruct->type = self::SERVER_ERROR;
         $errorStruct->internalCode = '099999';
-        $errorStruct->description = 'Um erro interno ocorreu durante o processamento da sua requisção.';
+
+        $errorStruct->description = $isShowError ?
+            $exception->getMessage() :
+            'Um erro interno ocorreu durante o processamento da sua requisição.';
 
         if ($this->authenticationException(get_class($exception))) {
             $errorStruct = $this->authenticationHandler($exception);
