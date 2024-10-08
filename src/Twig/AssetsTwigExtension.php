@@ -48,6 +48,6 @@ class AssetsTwigExtension extends AbstractExtension
 
         $ssl = Slim::isProduction() ? 's' : '';
 
-        return "{$protocolo}{$ssl}://{$host}/" . Slim::settings()->get('path.assets') . $asset;
+        return "{$protocolo}{$ssl}://{$host}/" . Slim::settings()->get('application.path.assets') . $asset;
     }
 }
