@@ -198,7 +198,7 @@ class Slim
 
 
         self::defineConstants();
-        self::cacheRoutes($app);
+//        self::cacheRoutes($app);
 
         self::provide();
 
