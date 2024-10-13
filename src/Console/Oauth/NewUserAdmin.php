@@ -20,6 +20,7 @@ class NewUserAdmin extends ConsoleMigration
     {
         $this->setName('slim:new-user-admin');
         $this->setDescription('Create a new user admin account.');
+        $this->configureConnection();
     }
 
     /**

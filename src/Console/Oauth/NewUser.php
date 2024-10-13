@@ -20,6 +20,7 @@ class NewUser extends ConsoleMigration
     {
         $this->setName('slim:new-user');
         $this->setDescription('Create a new user.');
+        $this->configureConnection();
     }
 
     /**
