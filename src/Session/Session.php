@@ -3,6 +3,7 @@
 namespace SlimFramework\Session;
 
 use SlimFramework\Entity\User\UserEntity;
+use SlimFramework\Enum\EnumProfile;
 
 class Session
 {
@@ -80,5 +81,27 @@ class Session
     public static function getUser(): ?UserEntity
     {
         return Session::isLoggedIn() ? $_SESSION['user'] : null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdministrator(): bool
+    {
+        if (!Session::isLoggedIn()) {
+            return false;
+        }
+
+        $usuario = Session::getUser();
+
+        if (!$usuario) {
+            return false;
+        }
+
+        if (!EnumProfile::isAdmin($usuario->profile()->first()->name)) {
+            return false;
+        }
+
+        return EnumProfile::isAdmin($usuario->profile()->first()->name);
     }
 }
