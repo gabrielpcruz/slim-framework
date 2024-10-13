@@ -86,7 +86,7 @@ class Session
     /**
      * @return bool
      */
-    public function isAdministrator(): bool
+    public static function isAdministrator(): bool
     {
         if (!Session::isLoggedIn()) {
             return false;
