@@ -121,7 +121,7 @@ class DefaultContainer implements SlimContainerApp
             ]),
 
             BearerTokenValidator::class => function (ContainerInterface $container) {
-                $oauth2PublicKey = $container->get('settings')->get('file.oauth_public');
+                $oauth2PublicKey = $container->get('settings')->get('application.file.oauth_public');
 
                 /** @var RepositoryManager $repositoryManager */
                 $repositoryManager = $container->get(RepositoryManager::class);
