@@ -160,6 +160,7 @@ class CreateTables extends ConsoleMigration
 
                 $table->string('username', 45);
                 $table->string('password', 255);
+                $table->string('email', 255)->nullable();
                 $table->tinyInteger('status');
                 $table->dateTime('created_at');
                 $table->dateTime('updated_at');
