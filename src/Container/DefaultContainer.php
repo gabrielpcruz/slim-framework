@@ -98,7 +98,7 @@ class DefaultContainer implements SlimContainerApp
                 $twigExtensionsPath = $settings->get('application.path.twig_extensions');
                 $extensionsApplication = Directory::turnNameSpacePathIntoArray(
                     $twigExtensionsPath,
-                    "SlimFramework\\Twig\\"
+                    "App\\Twig\\"
                 );
 
                 foreach ($extensionsApplication as $extension) {
