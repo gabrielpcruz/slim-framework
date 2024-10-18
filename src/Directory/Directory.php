@@ -29,7 +29,7 @@ class Directory
 
         $files = scandir($nameSpacePath);
 
-        if (empty($excludeFiles)) {
+        if (empty($files)) {
             return $items;
         }
 
