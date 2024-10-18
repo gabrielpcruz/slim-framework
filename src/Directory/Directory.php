@@ -27,7 +27,13 @@ class Directory
             $pathsToExclude[] = $path;
         }
 
-        foreach (scandir($nameSpacePath) as $class) {
+        $files = scandir($nameSpacePath);
+
+        if (empty($excludeFiles)) {
+            return $items;
+        }
+
+        foreach ($files as $class) {
             $isExcludePath = in_array($class, $pathsToExclude);
             $isExcludeFile = in_array($class, $excludeFiles);
 
