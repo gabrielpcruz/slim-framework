@@ -2,6 +2,7 @@
 
 namespace SlimFramework\Service\Token;
 
+use DomainException;
 use SlimFramework\Entity\User\ClientEntity;
 use SlimFramework\Repository\User\AccessTokenRepository;
 use SlimFramework\Repository\User\ClientRepository;
@@ -45,6 +46,10 @@ class AccessToken extends AbstractService
         $userRepository = $this->getRepository(UserRepository::class);
 
         $user = $userRepository->getUserEntityByCredentials($data);
+
+        if (!$user) {
+            throw new DomainException('Usuário não encontrado');
+        }
 
         $client = $user->client()->first();
 
