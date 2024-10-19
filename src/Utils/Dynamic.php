@@ -137,4 +137,17 @@ class Dynamic extends stdClass
 
         return $array;
     }
+
+    /**
+     * @param string $property
+     * @return mixed
+     */
+    public function getIfExists(string $property): mixed
+    {
+        if (!property_exists($this, $property)) {
+            return $this->{$property};
+        }
+
+        return null;
+    }
 }
