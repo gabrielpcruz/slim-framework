@@ -51,9 +51,9 @@ class AccessToken extends AbstractService
             throw new DomainException('Usuário não encontrado');
         }
 
-        $client = $user->client()->first();
-
-        $client->setIdentifier($client->getAttribute('id'));
+        $client = new ClientEntity();
+        $client->setAttribute('client_id', $user->getAttribute('client_id'));
+        $client->setAttribute('identifier', $user->getAttribute('client_id'));
 
         return $client;
     }
