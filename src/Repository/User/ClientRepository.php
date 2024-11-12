@@ -58,7 +58,7 @@ class ClientRepository extends AbstractRepository implements ClientRepositoryInt
     {
         $queryBuilder = $this->query();
 
-        $queryBuilder->where('identifier', '=', $data['client_id']);
+        $queryBuilder->where('id', '=', $data['client_id']);
 
         return $queryBuilder->get()->first();
     }
