@@ -61,17 +61,9 @@ class NewUser extends ConsoleMigration
             'updated_at' => $date,
         ]);
 
-        $client_id = $this->connection->table('client')->insert([
-            'name' => EnumProfile::USER,
-            'oauth2_client_id' => $oauth2_client_id,
-            'status' => 1,
-            'created_at' => $date,
-            'updated_at' => $date,
-        ]);
-
         $this->connection->table('user')->insert([
             'profile_id' => EnumProfile::USER_ID,
-            'client_id' => $client_id,
+            'oauth2_client_id' => $oauth2_client_id,
             'username' => $username,
             'password' => password_hash($password, PASSWORD_DEFAULT, ['cost' => 14]),
             'status' => 1,
