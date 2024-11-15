@@ -104,7 +104,7 @@ class UserRepository extends AbstractRepository implements UserRepositoryInterfa
     {
         $queryBuilder = $this->query();
 
-        $queryBuilder->join('oauth2_access_token', 'id', '=', 'user_id');
+        $queryBuilder->join('oauth2_access_token', 'user.id', '=', 'oauth2_access_token.user_id');
 
         $queryBuilder->where('access_token', '=', $data['token']);
 
