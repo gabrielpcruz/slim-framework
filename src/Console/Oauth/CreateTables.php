@@ -99,8 +99,7 @@ class CreateTables extends ConsoleMigration
             $this->schemaBuilder()->create('oauth2_session', function (Blueprint $table) {
                 $table->id();
 
-                $table->integer('oauth2_client_id')->unsigned();
-                $table->foreign('oauth2_client_id')->references('id')->on('oauth2_client');
+                $table->foreignId('oauth2_client_id')->constrained('oauth2_client');
                 $table->string('owner_type', 255);
                 $table->string('owner_id', 255);
                 $table->dateTime('created_at');
@@ -114,8 +113,7 @@ class CreateTables extends ConsoleMigration
             $this->schemaBuilder()->create('oauth2_auth_code', function (Blueprint $table) {
                 $table->id();
 
-                $table->integer('oauth2_session_id')->unsigned();
-                $table->foreign('oauth2_session_id')->references('id')->on('oauth2_session');
+                $table->foreignId('oauth2_session_id')->constrained('oauth2_session');
                 $table->integer('expire_time')->nullable();
                 $table->string('client_redirect_id', 255);
                 $table->dateTime('created_at');
@@ -159,10 +157,8 @@ class CreateTables extends ConsoleMigration
                 $table->id();
 
                 //FK
-                $table->integer('profile_id')->unsigned();
-                $table->foreign('profile_id')->references('id')->on('profile');
-                $table->integer('oauth2_client_id')->unsigned();
-                $table->foreign('oauth2_client_id')->references('id')->on('oauth2_client');
+                $table->foreignId('profile_id')->constrained('profile');
+                $table->foreignId('oauth2_client_id')->constrained('oauth2_client');
 
                 $table->string('username', 45);
                 $table->string('password', 255);
@@ -179,12 +175,10 @@ class CreateTables extends ConsoleMigration
             $this->schemaBuilder()->create('oauth2_access_token', function (Blueprint $table) {
                 $table->id();
 
-                $table->integer('oauth2_client_id')->unsigned();
-                $table->foreign('oauth2_client_id')->references('id')->on('oauth2_client');
+                $table->foreignId('oauth2_client_id')->constrained('oauth2_client');
 
                 //FK
-                $table->integer('user_id')->unsigned()->nullable();
-                $table->foreign('user_id')->references('id')->on('user');
+                $table->foreignId('user_id')->constrained('user');
 
                 $table->string('access_token', 255)->nullable();
                 $table->dateTime('expiry_date_time')->nullable();
@@ -201,8 +195,7 @@ class CreateTables extends ConsoleMigration
 
 
                 //FK
-                $table->integer('oauth2_access_token_id')->unsigned();
-                $table->foreign('oauth2_access_token_id')->references('id')->on('oauth2_access_token');
+                $table->foreignId('oauth2_access_token_id')->constrained('oauth2_access_token');
 
                 $table->dateTime('expire_time')->nullable();
                 $table->string('refresh_token', 255);
