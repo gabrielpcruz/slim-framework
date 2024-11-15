@@ -50,7 +50,7 @@ class UserRepository extends AbstractRepository implements UserRepositoryInterfa
         }
 
         /** @var ClientEntity $clientEntity */
-        if ($user->client_id != $clientEntity->getAttribute('id')) {
+        if ($user->oauth2_client_id != $clientEntity->getAttribute('id')) {
             return false;
         }
 
