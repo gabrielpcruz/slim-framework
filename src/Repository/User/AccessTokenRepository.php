@@ -41,7 +41,7 @@ class AccessTokenRepository extends AbstractRepository implements AccessTokenRep
             $accessTokenEntity->setAttribute('user_id', $accessTokenEntity->getUserIdentifier());
         }
 
-        $accessTokenEntity->setAttribute('oauth2_client_id', $accessTokenEntity->getClient()->getIdentifier());
+        $accessTokenEntity->setAttribute('oauth2_client_id', $accessTokenEntity->getClient()->getAttribute('id'));
 
         $this->save($accessTokenEntity);
     }
