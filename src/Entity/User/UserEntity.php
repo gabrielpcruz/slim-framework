@@ -28,7 +28,7 @@ class UserEntity extends Entity implements UserEntityInterface
      */
     public function client(): BelongsTo
     {
-        return $this->belongsTo(ClientEntity::class);
+        return $this->belongsTo(ClientEntity::class, 'oauth2_client_id', 'id');
     }
 
     /**
@@ -36,7 +36,7 @@ class UserEntity extends Entity implements UserEntityInterface
      */
     public function profile(): BelongsTo
     {
-        return $this->belongsTo(ProfileEntity::class);
+        return $this->belongsTo(ProfileEntity::class, 'profile_id', 'id');
     }
 
     /**
