@@ -61,7 +61,6 @@ class CreateTables extends ConsoleMigration
         $this->schemaBuilder()->dropIfExists('profile');
         $this->schemaBuilder()->dropIfExists('oauth2_auth_code');
         $this->schemaBuilder()->dropIfExists('oauth2_session');
-        $this->schemaBuilder()->dropIfExists('client');
         $this->schemaBuilder()->dropIfExists('oauth2_client');
     }
 
@@ -131,21 +130,21 @@ class CreateTables extends ConsoleMigration
             });
         }
 
-        if (!$this->schemaBuilder()->hasTable('client')) {
-            //client
-            $this->schemaBuilder()->create('client', function ($table) {
-                $table->increments('id')->unsigned();
-
-                //FK
-                $table->integer('oauth2_client_id')->unsigned();
-                $table->foreign('oauth2_client_id')->references('id')->on('oauth2_client');
-                $table->string('name', 45);
-                $table->tinyInteger('status');
-                $table->dateTime('created_at');
-                $table->dateTime('updated_at');
-                $table->softDeletes('deleted_at', 0);
-            });
-        }
+//        if (!$this->schemaBuilder()->hasTable('client')) {
+//            //client
+//            $this->schemaBuilder()->create('client', function ($table) {
+//                $table->increments('id')->unsigned();
+//
+//                //FK
+//                $table->integer('oauth2_client_id')->unsigned();
+//                $table->foreign('oauth2_client_id')->references('id')->on('oauth2_client');
+//                $table->string('name', 45);
+//                $table->tinyInteger('status');
+//                $table->dateTime('created_at');
+//                $table->dateTime('updated_at');
+//                $table->softDeletes('deleted_at', 0);
+//            });
+//        }
 
         if (!$this->schemaBuilder()->hasTable('user')) {
             //user
@@ -155,8 +154,8 @@ class CreateTables extends ConsoleMigration
                 //FK
                 $table->integer('profile_id')->unsigned();
                 $table->foreign('profile_id')->references('id')->on('profile');
-                $table->integer('client_id')->unsigned();
-                $table->foreign('client_id')->references('id')->on('client');
+                $table->integer('oauth2_client_id')->unsigned();
+                $table->foreign('oauth2_client_id')->references('id')->on('oauth2_client');
 
                 $table->string('username', 45);
                 $table->string('password', 255);
