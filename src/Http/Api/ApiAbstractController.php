@@ -53,6 +53,15 @@ abstract class ApiAbstractController extends AbstractController
     }
 
     /**
+     * @param Request $request
+     * @return Dynamic
+     */
+    protected function fromBody(Request $request): Dynamic
+    {
+        return Dynamic::fromArray($request->getParsedBody()) ?? new Dynamic();
+    }
+
+    /**
      * @return Dynamic
      */
     protected function payloadResponse(): Dynamic
