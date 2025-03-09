@@ -45,7 +45,7 @@ abstract class ProfileAccess extends MiddlewareApi implements ProfileAccessInter
 
         /** @var UserEntity $user */
         $user = $userRepository->findOneBy(
-            ['client_id' => $request->getAttribute('oauth_client_id')]
+            ['id' => $request->getAttribute('oauth_user_id')]
         );
 
         return $user;
