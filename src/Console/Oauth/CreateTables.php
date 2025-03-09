@@ -162,7 +162,7 @@ class CreateTables extends ConsoleMigration
 
                 $table->string('username', 45);
                 $table->string('password', 255);
-                $table->string('email', 255)->nullable();
+                $table->string('email', 255)->nullable()->unique();
                 $table->string('name', 255)->nullable();
                 $table->tinyInteger('status');
                 $table->dateTime('created_at');

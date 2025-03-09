@@ -31,7 +31,7 @@ class AccessToken extends AbstractService
 
         return match ($grant_type) {
             'refresh_token' => $this->getClientByIdentifier($data),
-            default => $this->getClientByUserPassword($data),
+            default => $this->getClientByEmailPassword($data),
         };
     }
 
@@ -40,7 +40,7 @@ class AccessToken extends AbstractService
      *
      * @return object
      */
-    private function getClientByUserPassword(array $data): object
+    private function getClientByEmailPassword(array $data): object
     {
         /** @var UserRepository $userRepository */
         $userRepository = $this->getRepository(UserRepository::class);

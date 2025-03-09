@@ -46,7 +46,7 @@ class Token extends ApiAbstractController
         $payload['grant_type'] = $data['grant_type'];
 
         if ($data['grant_type'] === 'password') {
-            $payload['username'] = $data['username'];
+            $payload['email'] = $data['email'];
             $payload['password'] = $data['password'];
             $payload['client_id'] = $this->accessToken->getClientByGrant($data)->getAttribute('id');
         }

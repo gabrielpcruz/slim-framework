@@ -66,7 +66,7 @@ class UserRepository extends AbstractRepository implements UserRepositoryInterfa
     {
         $queryBuilder = $this->query();
 
-        $queryBuilder->where('username', '=', $data['username']);
+        $queryBuilder->where('email', '=', $data['email']);
         $user = $queryBuilder->get()->first();
 
         if (!password_verify($data['password'], $user->password)) {
