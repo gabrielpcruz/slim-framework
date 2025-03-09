@@ -38,6 +38,13 @@ class NewUser extends ConsoleMigration
         $uuid = uniqid();
 
         $questionUserName = new Question(
+            "Please type the user e-mail:" . PHP_EOL,
+            "username{$uuid}"
+        );
+
+        $userEmail = $helper->ask($input, $output, $questionUserName);
+
+        $questionUserName = new Question(
             "Please type the user name:" . PHP_EOL,
             "username{$uuid}"
         );
@@ -65,6 +72,7 @@ class NewUser extends ConsoleMigration
             'profile_id' => EnumProfile::USER_ID,
             'oauth2_client_id' => $oauth2_client_id,
             'username' => $username,
+            'email' => $userEmail,
             'password' => password_hash($password, PASSWORD_DEFAULT, ['cost' => 14]),
             'status' => 1,
             'created_at' => $date,
