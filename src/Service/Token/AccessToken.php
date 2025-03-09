@@ -54,6 +54,7 @@ class AccessToken extends AbstractService
         $client = new ClientEntity();
         $client->setAttribute('id', $user->client->getAttribute('id'));
         $client->setAttribute('identifier', $user->client->getAttribute('identifier'));
+        $client->setAttribute('username', $user->getAttribute('username'));
 
         return $client;
     }
