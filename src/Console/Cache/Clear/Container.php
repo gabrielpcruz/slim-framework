@@ -29,7 +29,7 @@ class Container extends Console
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $cache = $this->getContainer()->get('settings')->get('path.cache');
+        $cache = $this->getContainer()->get('application')->get('path.cache');
 
         exec("rm -rf $cache/container/*");
 

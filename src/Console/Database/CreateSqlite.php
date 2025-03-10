@@ -29,7 +29,7 @@ class CreateSqlite extends Console
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $storagePath = $this->getContainer()->get('settings')->get('path.storage');
+        $storagePath = $this->getContainer()->get('application')->get('path.storage');
         $databasePath = $storagePath . '/database';
 
         $sqlitePath = $databasePath . "/db.sqlite";
