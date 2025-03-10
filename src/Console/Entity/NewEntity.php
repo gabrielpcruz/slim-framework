@@ -39,7 +39,7 @@ class NewEntity extends Console
         $entity = $helper->ask($input, $output, $question);
 
 
-        $entityPath = $this->getContainer()->get('application')->get('path.entity');
+        $entityPath = $this->getContainer()->get('settings')->get('application.path.entity');
 
         $EntityName = ucfirst($entity);
 
@@ -63,7 +63,7 @@ class NewEntity extends Console
 
         // Cria Repository
 
-        $repositoryPath = $this->getContainer()->get('application')->get('path.repository');
+        $repositoryPath = $this->getContainer()->get('settings')->get('application.path.repository');
 
         $newRepositoryPath = $EntityName;
         $command = "mkdir $repositoryPath/$newRepositoryPath";
