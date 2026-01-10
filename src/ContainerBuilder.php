@@ -18,17 +18,26 @@ final class ContainerBuilder
      */
     public function build(): Container
     {
-        return (new ContainerBuilderDI())
-            ->addDefinitions((new DefaultContainer())->getDefinitions())
-            ->addDefinitions([
-                'flash' => function () {
-                    return new Messages($_SESSION);
-                }
-            ])
-            ->addDefinitions($this->getDefinitions())
-            ->enableCompilation(SLIM_APPLICATION_ROOT_PATH . '/storage/cache/container')
-            ->writeProxiesToFile(true, SLIM_APPLICATION_ROOT_PATH . '/storage/cache/proxy')
-            ->build();
+        $definitions = (new DefaultContainer())->getDefinitions();
+
+        $settings = $definitions['settings']();
+
+        $container = (new ContainerBuilderDI());
+        $container->addDefinitions($definitions);
+        $container->addDefinitions([
+            'flash' => function () {
+                return new Messages($_SESSION);
+            }
+        ]);
+
+        $container->addDefinitions($this->getDefinitions());
+
+        if ($settings->get('application.cache.container')) {
+            $container->enableCompilation(SLIM_APPLICATION_ROOT_PATH . '/storage/cache/container');
+            $container->writeProxiesToFile(true, SLIM_APPLICATION_ROOT_PATH . '/storage/cache/proxy');
+        }
+
+        return $container->build();
     }
 
     /**
