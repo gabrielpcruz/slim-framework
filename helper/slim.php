@@ -15,6 +15,12 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 if (!function_exists('getConsole')) {
+    /**
+     * @throws NotFoundExceptionInterface
+     * @throws NotFoundException
+     * @throws ContainerExceptionInterface
+     * @throws DependencyException
+     */
     function getConsole(): Application
     {
         $console = new Application();
@@ -27,6 +33,7 @@ if (!function_exists('getConsole')) {
                     $console->add(Slim::container()->get($commandClass));
                 } catch (Throwable $throwable) {
                     var_dump("(Console Output).: " . $throwable->getMessage());
+                    var_dump("(Console Output).: " . $throwable->getTraceAsString());
                 }
             }
         }

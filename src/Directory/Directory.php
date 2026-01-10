@@ -41,7 +41,16 @@ class Directory
                 $possibleDirectory = $nameSpacePath . "/{$class}";
 
                 if (!is_dir($possibleDirectory)) {
-                    $items[] = $namespace . str_replace('.php', '', $class);
+                    $classFQN = $namespace . str_replace('.php', '', $class);
+
+                    $arrayClassFQN = explode('\\', $classFQN);
+                    $className = array_pop($arrayClassFQN);
+
+                    if (str_starts_with($className, '.')) {
+                        continue;
+                    }
+
+                    $items[] = $classFQN;
                 } else {
                     $newNameSpace = ($namespace . $class . "\\");
 

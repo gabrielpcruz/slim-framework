@@ -72,6 +72,10 @@ class ConsoleMapper
      * @param array $excludePaths
      * @param array $commands
      * @return array
+     * @throws ContainerExceptionInterface
+     * @throws DependencyException
+     * @throws NotFoundException
+     * @throws NotFoundExceptionInterface
      */
     private function slimFrameworkConsole(array $excludeClasses, array $excludePaths, array $commands): array
     {
