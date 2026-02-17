@@ -113,7 +113,7 @@ class Slim
      */
     public static function version(): string
     {
-        if (self::isProduction()) {
+        if (self::isProduction() || self::settings()->get('application.cache.assets_version')) {
             return Slim::VERSION;
         }
 

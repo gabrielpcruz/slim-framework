@@ -31,7 +31,7 @@ final class ContainerBuilder
         ]);
 
         $container->addDefinitions($this->getDefinitions());
-
+        
         if ($settings->get('application.cache.container')) {
             $container->enableCompilation(SLIM_APPLICATION_ROOT_PATH . '/storage/cache/container');
             $container->writeProxiesToFile(true, SLIM_APPLICATION_ROOT_PATH . '/storage/cache/proxy');

@@ -52,7 +52,7 @@ class NewEntity extends Console
         $newEntityName = $EntityName;
         $newEntity = "{$newEntityName}";
 
-        $nameSpaceEntity = "SlimFramework\\Entity\\$EntityName";
+        $nameSpaceEntity = "App\\Entity\\$EntityName";
         $newEntityClass = $this->templateEntity($newEntity, $nameSpaceEntity);
 
 
@@ -73,7 +73,7 @@ class NewEntity extends Console
         $newRepositoryName = $EntityName;
         $newRepository = "{$newRepositoryName}";
 
-        $nameSpaceRepository = "SlimFramework\\Repository\\$EntityName";
+        $nameSpaceRepository = "App\\Repository\\$EntityName";
         $newRepositoryClass = $this->templateRepository(
             $newRepository,
             "{$nameSpaceEntity}",
@@ -87,6 +87,8 @@ class NewEntity extends Console
 
         $command = "echo '$newRepositoryClass' >> {$class}";
         exec("$command");
+        exec("chown -R 1000:1000 $entityPath/$newEntityPath");
+        exec("chown -R 1000:1000 $repositoryPath/$newRepositoryPath");
 
         return Command::SUCCESS;
     }
@@ -99,6 +101,8 @@ class NewEntity extends Console
 <?php
 
 namespace $namespace;
+
+use SlimFramework\Entity\Entity;
 
 class {$entityName}Entity extends Entity
 {
@@ -117,9 +121,10 @@ STR;
 
 namespace $namespace;
 
-{$entityNameSpace}{$entityFull};
+use {$entityNameSpace}{$entityFull};
+use SlimFramework\Repository\AbstractRepository;
 
-class {$repositoryName}Repository extends Repository
+class {$repositoryName}Repository extends AbstractRepository
 {
     /**
      * @return string
